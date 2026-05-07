@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "products"
+    create: true
+    slug: "{{slug}}"
+
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Cutting Boards", "Charcuterie Boards", "Cigar Ash Trays", "Memory Boxes", "Rolling Trays"] }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Sold", name: "sold", widget: "boolean", default: false }
+      - { label: "Stripe Link", name: "stripe", widget: "string" }
+
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        field: { label: Image, name: image, widget: image }
