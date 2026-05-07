@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Shop | Ollie Box Woodshop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <a class="brand" href="index.html">
+      <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+      <span>Ollie Box Woodshop</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#custom">Custom Orders</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <button class="menu-toggle">☰</button>
+
+  </header>
+
+  <main>
+
+    <section class="hero small-hero">
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+
+        <p class="eyebrow">Browse available pieces</p>
+
+        <h1>The Woodshop</h1>
+
+        <p class="hero-copy">
+          Explore handcrafted one-of-one pieces from Ollie Box Woodshop.
+          Every item is individually made and never mass produced.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="section shop-section">
+
+      <div class="shop-layout">
+
+        <aside class="shop-sidebar" aria-label="Shop categories">
+          <p class="sidebar-title">Shop By Category</p>
+          <a class="sidebar-link" href="#cutting-boards">Cutting Boards</a>
+          <a class="sidebar-link" href="#charcuterie-boards">Charcuterie Boards</a>
+          <a class="sidebar-link" href="#cigar-ash-trays">Cigar Ash Trays</a>
+          <a class="sidebar-link" href="#memory-boxes">Memory Boxes</a>
+          <a class="sidebar-link" href="#rolling-trays">Rolling Trays</a>
+        </aside>
+
+        <div class="shop-content">
+
+          <div class="shop-category-section" id="cutting-boards">
+            <div class="category-heading">
+              <h3>Cutting Boards</h3>
+              <p>Handcrafted boards built for everyday use and serving.</p>
+            </div>
+            <div class="product-grid" data-product-grid="cutting-boards"></div>
+          </div>
+
+          <div class="shop-category-section" id="charcuterie-boards">
+            <div class="category-heading">
+              <h3>Charcuterie Boards</h3>
+              <p>Serving boards made for hosting and gifting.</p>
+            </div>
+            <div class="product-grid" data-product-grid="charcuterie-boards"></div>
+          </div>
+
+          <div class="shop-category-section" id="cigar-ash-trays">
+            <div class="category-heading">
+              <h3>Cigar Ash Trays</h3>
+              <p>Solid wood cigar trays made with a clean finish and one-of-one character.</p>
+            </div>
+            <div class="product-grid" data-product-grid="cigar-ash-trays"></div>
+          </div>
+
+          <div class="shop-category-section" id="memory-boxes">
+            <div class="category-heading">
+              <h3>Memory Boxes</h3>
+              <p>Handcrafted boxes designed to hold keepsakes, gifts, and meaningful pieces.</p>
+            </div>
+            <div class="product-grid" data-product-grid="memory-boxes"></div>
+          </div>
+
+          <div class="shop-category-section" id="rolling-trays">
+            <div class="category-heading">
+              <h3>Rolling Trays</h3>
+              <p>Custom wooden trays with a clean finish and one-of-one character.</p>
+            </div>
+            <div class="product-grid" data-product-grid="rolling-trays"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    const products = [
+      {
+        name: "Froggy Fresh",
+        category: "cutting-boards",
+        price: "$250",
+        image: "froggy-fresh-1.jpeg",
+        wood: "Black Limba",
+        size: "12 in × 18 in × 1.25 in",
+        finish: "Food-safe oil and wax",
+        description: "This unique pattern using black limba created a fresh board that made our hearts jump around!",
+        status: "available",
+        stripeLink: "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00"
+      },
+      {
+        name: "Maple Cutting Board",
+        category: "cutting-boards",
+        price: "$120",
+        image: "",
+        wood: "Maple",
+        size: "10 in × 16 in × 1 in",
+        finish: "Food-safe oil and wax",
+        description: "Bright maple grain made for daily use and clean presentation.",
+        status: "available",
+        stripeLink: "#"
+      },
+      {
+        name: "Cherry Charcuterie Board",
+        category: "charcuterie-boards",
+        price: "$135",
+        image: "",
+        wood: "Cherry",
+        size: "11 in × 20 in × 1 in",
+        finish: "Food-safe oil and wax",
+        description: "A one-of-one cherry board with rich color and character.",
+        status: "sold",
+        stripeLink: "#"
+      },
+      {
+        name: "Walnut Cigar Ash Tray",
+        category: "cigar-ash-trays",
+        price: "Price TBD",
+        image: "",
+        wood: "Walnut",
+        size: "TBD",
+        finish: "TBD",
+        description: "A handcrafted cigar tray placeholder to show how this category will look.",
+        status: "coming-soon",
+        stripeLink: "#"
+      },
+      {
+        name: "Maple Memory Box",
+        category: "memory-boxes",
+        price: "Price TBD",
+        image: "",
+        wood: "Maple",
+        size: "TBD",
+        finish: "TBD",
+        description: "A placeholder memory box listing so you can see how this section will work.",
+        status: "coming-soon",
+        stripeLink: "#"
+      },
+      {
+        name: "Cherry Rolling Tray",
+        category: "rolling-trays",
+        price: "Price TBD",
+        image: "",
+        wood: "Cherry",
+        size: "TBD",
+        finish: "TBD",
+        description: "A placeholder rolling tray listing so the category has visible functionality.",
+        status: "coming-soon",
+        stripeLink: "#"
+      }
+    ];
+
+    const categoryFallbacks = {
+      "cutting-boards": "No cutting boards are listed right now. New pieces will be added as they are finished.",
+      "charcuterie-boards": "No charcuterie boards are listed right now. New pieces will be added as they are finished.",
+      "cigar-ash-trays": "No cigar ash trays are listed right now. New pieces will be added as they are finished.",
+      "memory-boxes": "No memory boxes are listed right now. New pieces will be added as they are finished.",
+      "rolling-trays": "No rolling trays are listed right now. New pieces will be added as they are finished."
+    };
+
+    function getBadgeText(status) {
+      if (status === "sold") return "Sold";
+      if (status === "coming-soon") return "Coming Soon";
+      return "Only One Available";
+    }
+
+    function getImageClass(product) {
+      if (product.image) return "product-image has-photo";
+      if (product.wood && product.wood.toLowerCase().includes("maple")) return "product-image maple";
+      if (product.wood && product.wood.toLowerCase().includes("cherry")) return "product-image cherry";
+      return "product-image walnut";
+    }
+
+    function createProductCard(product) {
+      const isSold = product.status === "sold";
+      const isComingSoon = product.status === "coming-soon";
+      const imageStyle = product.image ? `style="background-image: url('${product.image}')"` : "";
+      const imageText = product.image ? "" : "<span>Photo Coming Soon</span>";
+      const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "Buy Now";
+      const buttonHref = !isSold && !isComingSoon && product.stripeLink ? product.stripeLink : "#";
+      const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small";
+
+      return `
+        <article class="product-card ${isSold ? "sold" : ""}">
+          <div class="${getImageClass(product)}" ${imageStyle}>${imageText}</div>
+          <div class="product-info">
+            <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product.status)}</span>
+            <h3>${product.name}</h3>
+            <p class="price">${product.price}</p>
+            <p>${product.description}</p>
+            <p class="product-details"><strong>Wood:</strong> ${product.wood} · <strong>Size:</strong> ${product.size}</p>
+            <a class="${buttonClass}" href="${buttonHref}" target="_blank" rel="noreferrer">${buttonText}</a>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderProducts() {
+      Object.keys(categoryFallbacks).forEach((category) => {
+        const grid = document.querySelector(`[data-product-grid="${category}"]`);
+        if (!grid) return;
+
+        const matchingProducts = products.filter((product) => product.category === category);
+
+        if (matchingProducts.length === 0) {
+          grid.innerHTML = `<div class="empty-category"><p>${categoryFallbacks[category]}</p></div>`;
+          return;
+        }
+
+        grid.innerHTML = matchingProducts.map(createProductCard).join("");
+      });
+    }
+
+    renderProducts();
+  </script>
+
+</body>
+</html>
