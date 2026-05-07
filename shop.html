@@ -117,82 +117,31 @@
 
   </main>
 
-  <script>
-    const products = [
-      {
-        name: "Froggy Fresh",
-        category: "cutting-boards",
-        price: "$250",
-        image: "froggy-fresh-1.jpeg",
-        wood: "Black Limba",
-        size: "12 in × 18 in × 1.25 in",
-        finish: "Food-safe oil and wax",
-        description: "This unique pattern using black limba created a fresh board that made our hearts jump around!",
-        status: "available",
-        stripeLink: "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00"
-      },
-      {
-        name: "Maple Cutting Board",
-        category: "cutting-boards",
-        price: "$120",
-        image: "",
-        wood: "Maple",
-        size: "10 in × 16 in × 1 in",
-        finish: "Food-safe oil and wax",
-        description: "Bright maple grain made for daily use and clean presentation.",
-        status: "available",
-        stripeLink: "#"
-      },
-      {
-        name: "Cherry Charcuterie Board",
-        category: "charcuterie-boards",
-        price: "$135",
-        image: "",
-        wood: "Cherry",
-        size: "11 in × 20 in × 1 in",
-        finish: "Food-safe oil and wax",
-        description: "A one-of-one cherry board with rich color and character.",
-        status: "sold",
-        stripeLink: "#"
-      },
-      {
-        name: "Walnut Cigar Ash Tray",
-        category: "cigar-ash-trays",
-        price: "Price TBD",
-        image: "",
-        wood: "Walnut",
-        size: "TBD",
-        finish: "TBD",
-        description: "A handcrafted cigar tray placeholder to show how this category will look.",
-        status: "coming-soon",
-        stripeLink: "#"
-      },
-      {
-        name: "Maple Memory Box",
-        category: "memory-boxes",
-        price: "Price TBD",
-        image: "",
-        wood: "Maple",
-        size: "TBD",
-        finish: "TBD",
-        description: "A placeholder memory box listing so you can see how this section will work.",
-        status: "coming-soon",
-        stripeLink: "#"
-      },
-      {
-        name: "Cherry Rolling Tray",
-        category: "rolling-trays",
-        price: "Price TBD",
-        image: "",
-        wood: "Cherry",
-        size: "TBD",
-        finish: "TBD",
-        description: "A placeholder rolling tray listing so the category has visible functionality.",
-        status: "coming-soon",
-        stripeLink: "#"
-      }
-    ];
+  <dialog id="productModal" class="product-modal">
+    <button class="modal-close" aria-label="Close product details" onclick="document.getElementById('productModal').close()">×</button>
+    <div class="modal-body">
+      <div class="modal-gallery">
+        <div id="modalImage" class="modal-image"><span>Photo Coming Soon</span></div>
+        <div class="modal-gallery-actions">
+          <button id="modalPrev" class="gallery-btn" type="button">Previous</button>
+          <button id="modalNext" class="gallery-btn" type="button">Next</button>
+        </div>
+      </div>
 
+      <h2 id="modalName"></h2>
+      <p id="modalPrice" class="price"></p>
+      <p id="modalDescription"></p>
+      <ul>
+        <li><strong>Wood:</strong> <span id="modalWood"></span></li>
+        <li><strong>Size:</strong> <span id="modalSize"></span></li>
+        <li><strong>Finish:</strong> <span id="modalFinish"></span></li>
+      </ul>
+      <p>This is a one-of-one piece from Ollie Box Woodshop. No two pieces are ever the same.</p>
+      <a id="modalBuy" class="btn primary" href="#" target="_blank" rel="noreferrer">Buy This Piece</a>
+    </div>
+  </dialog>
+
+  <script>
     const categoryFallbacks = {
       "cutting-boards": "No cutting boards are listed right now. New pieces will be added as they are finished.",
       "charcuterie-boards": "No charcuterie boards are listed right now. New pieces will be added as they are finished.",
@@ -208,20 +157,31 @@
     }
 
     function getImageClass(product) {
-      if (product.image) return "product-image has-photo";
-      if (product.wood && product.wood.toLowerCase().includes("maple")) return "product-image maple";
-      if (product.wood && product.wood.toLowerCase().includes("cherry")) return "product-image cherry";
+      const images = product.images || [];
+      const wood = product.wood ? product.wood.toLowerCase() : "";
+
+      if (images.length > 0) return "product-image has-photo";
+      if (wood.includes("maple")) return "product-image maple";
+      if (wood.includes("cherry")) return "product-image cherry";
       return "product-image walnut";
+    }
+
+    function getProductImages(product) {
+      if (Array.isArray(product.images)) return product.images;
+      if (product.image) return [product.image];
+      return [];
     }
 
     function createProductCard(product) {
       const isSold = product.status === "sold";
       const isComingSoon = product.status === "coming-soon";
-      const imageStyle = product.image ? `style="background-image: url('${product.image}')"` : "";
-      const imageText = product.image ? "" : "<span>Photo Coming Soon</span>";
-      const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "Buy Now";
-      const buttonHref = !isSold && !isComingSoon && product.stripeLink ? product.stripeLink : "#";
-      const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small";
+      const images = getProductImages(product);
+      const firstImage = images.length > 0 ? images[0] : "";
+      const imageStyle = firstImage ? `style="background-image: url('${firstImage}')"` : "";
+      const imageText = firstImage ? "" : "<span>Photo Coming Soon</span>";
+      const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "View Details";
+      const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
+      const encodedImages = encodeURIComponent(JSON.stringify(images));
 
       return `
         <article class="product-card ${isSold ? "sold" : ""}">
@@ -231,14 +191,68 @@
             <h3>${product.name}</h3>
             <p class="price">${product.price}</p>
             <p>${product.description}</p>
-            <p class="product-details"><strong>Wood:</strong> ${product.wood} · <strong>Size:</strong> ${product.size}</p>
-            <a class="${buttonClass}" href="${buttonHref}" target="_blank" rel="noreferrer">${buttonText}</a>
+            <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
+            <button class="${buttonClass}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stripe="${product.stripeLink || "#"}" data-images="${encodedImages}">${buttonText}</button>
           </div>
         </article>
       `;
     }
 
-    function renderProducts() {
+    function setupProductModal() {
+      const modal = document.getElementById("productModal");
+      const buttons = document.querySelectorAll(".product-details-button");
+
+      if (!modal) return;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const images = JSON.parse(decodeURIComponent(button.dataset.images || "%5B%5D"));
+          let currentImageIndex = 0;
+
+          document.getElementById("modalName").textContent = button.dataset.name;
+          document.getElementById("modalPrice").textContent = button.dataset.price;
+          document.getElementById("modalDescription").textContent = button.dataset.description;
+          document.getElementById("modalWood").textContent = button.dataset.wood;
+          document.getElementById("modalSize").textContent = button.dataset.size;
+          document.getElementById("modalFinish").textContent = button.dataset.finish;
+          document.getElementById("modalBuy").href = button.dataset.stripe || "#";
+
+          const modalImage = document.getElementById("modalImage");
+          const prevButton = document.getElementById("modalPrev");
+          const nextButton = document.getElementById("modalNext");
+
+          function updateModalImage() {
+            if (!images.length) {
+              modalImage.style.backgroundImage = "";
+              modalImage.innerHTML = "<span>Photo Coming Soon</span>";
+              prevButton.style.display = "none";
+              nextButton.style.display = "none";
+              return;
+            }
+
+            modalImage.innerHTML = "";
+            modalImage.style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            prevButton.style.display = images.length > 1 ? "inline-flex" : "none";
+            nextButton.style.display = images.length > 1 ? "inline-flex" : "none";
+          }
+
+          prevButton.onclick = () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateModalImage();
+          };
+
+          nextButton.onclick = () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateModalImage();
+          };
+
+          updateModalImage();
+          modal.showModal();
+        });
+      });
+    }
+
+    function renderProducts(products) {
       Object.keys(categoryFallbacks).forEach((category) => {
         const grid = document.querySelector(`[data-product-grid="${category}"]`);
         if (!grid) return;
@@ -252,9 +266,19 @@
 
         grid.innerHTML = matchingProducts.map(createProductCard).join("");
       });
+
+      setupProductModal();
     }
 
-    renderProducts();
+    fetch("data/products.json")
+      .then((response) => response.json())
+      .then((data) => renderProducts(data.products || []))
+      .catch(() => {
+        Object.keys(categoryFallbacks).forEach((category) => {
+          const grid = document.querySelector(`[data-product-grid="${category}"]`);
+          if (grid) grid.innerHTML = `<div class="empty-category"><p>${categoryFallbacks[category]}</p></div>`;
+        });
+      });
   </script>
 
 </body>

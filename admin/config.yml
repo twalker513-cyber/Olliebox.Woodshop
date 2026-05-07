@@ -6,21 +6,30 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  - name: "products"
-    label: "Products"
-    folder: "products"
-    create: true
-    slug: "{{slug}}"
-
-    fields:
-      - { label: "Product Name", name: "title", widget: "string" }
-      - { label: "Price", name: "price", widget: "string" }
-      - { label: "Category", name: "category", widget: "select", options: ["Cutting Boards", "Charcuterie Boards", "Cigar Ash Trays", "Memory Boxes", "Rolling Trays"] }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Sold", name: "sold", widget: "boolean", default: false }
-      - { label: "Stripe Link", name: "stripe", widget: "string" }
-
-      - label: "Images"
-        name: "images"
-        widget: "list"
-        field: { label: Image, name: image, widget: image }
+  - name: "store"
+    label: "Store"
+    files:
+      - name: "products"
+        label: "Products"
+        file: "data/products.json"
+        format: "json"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.price}}"
+            fields:
+              - { label: "Product Name", name: "name", widget: "string" }
+              - { label: "Category", name: "category", widget: "select", options: ["cutting-boards", "charcuterie-boards", "cigar-ash-trays", "memory-boxes", "rolling-trays"] }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Wood", name: "wood", widget: "string", required: false }
+              - { label: "Size", name: "size", widget: "string", required: false }
+              - { label: "Finish", name: "finish", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Status", name: "status", widget: "select", options: ["available", "sold", "coming-soon"], default: "available" }
+              - { label: "Stripe Link", name: "stripeLink", widget: "string", required: false }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: false
+                field: { label: "Image", name: "image", widget: "image" }
