@@ -113,6 +113,16 @@
       box-shadow: var(--shadow);
     }
 
+    .clickable-card {
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .clickable-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+
     .product-image {
       height: 280px;
       display: grid;
@@ -212,6 +222,19 @@
       display: block;
     }
 
+    .product-modal {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .product-modal::-webkit-scrollbar {
+      display: none;
+    }
+
     .modal-gallery-actions {
       display: flex;
       justify-content: center;
@@ -230,6 +253,48 @@
       cursor: pointer;
     }
 
+    .modal-close:focus,
+    .modal-close:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+.cart-button {
+  border: none;
+  background: transparent;
+  color: var(--cream);
+  border-radius: 0;
+  padding: 0;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: inherit;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease;
+}
+
+.cart-button:hover {
+  color: #fff;
+}
+
+.snipcart-items-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: var(--rust);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0 0.35rem;
+}
+
     @media (max-width: 850px) {
       .product-grid {
         grid-template-columns: 1fr;
@@ -247,13 +312,14 @@
 window.SnipcartSettings = {
   publicApiKey: "YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky",
   loadStrategy: "on-user-interaction",
+  modalStyle: "side",
 };
 </script>
 
 <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
 
-<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky"></div> data-config-add-product-behavior="none"></div>
+<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky" data-config-add-product-behavior="none"></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
       <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
@@ -336,7 +402,7 @@ window.SnipcartSettings = {
   </main>
 
   <dialog id="productModal" class="product-modal">
-    <button class="modal-close" aria-label="Close product details" onclick="document.getElementById('productModal').close()">×</button>
+    <button class="modal-close" aria-label="Close product details" onclick="document.getElementById('productModal').close(); document.body.classList.remove('modal-open');">×</button>
     <div class="modal-body">
       <div class="modal-gallery">
         <div id="modalImage" class="modal-image"><span>Photo Coming Soon</span></div>
@@ -355,7 +421,7 @@ window.SnipcartSettings = {
         <li><strong>Finish:</strong> <span id="modalFinish"></span></li>
       </ul>
       <p>This is a one-of-one piece from Ollie Box Woodshop. No two pieces are ever the same.</p>
-      <button id="modalBuy" class="btn primary snipcart-add-item" type="button" onclick="document.getElementById('productModal').close()">Add to Cart</button>
+      <button id="modalBuy" class="btn primary snipcart-add-item" type="button" onclick="document.getElementById('productModal').close(); document.body.classList.remove('modal-open');">Add to Cart</button>
     </div>
   </dialog>
 
@@ -427,7 +493,7 @@ window.SnipcartSettings = {
       const encodedImages = encodeURIComponent(JSON.stringify(images));
 
       return `
-        <article class="product-card ${isSold ? "sold" : ""}">
+        <article class="product-card ${isSold ? "sold" : ""} ${!isSold && !isComingSoon ? "clickable-card" : ""}">
           <div class="${getImageClass(product)}">${imageContent}</div>
           <div class="product-info">
             <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product.status)}</span>
@@ -435,8 +501,22 @@ window.SnipcartSettings = {
             <p class="price">${product.price}</p>
             <p>${product.description}</p>
             <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
-            <button class="${buttonClass}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stripe="${product.stripeLink || "#"}" data-images="${encodedImages}">${buttonText}</button>
-          </div>
+            <button class="${buttonClass}" onclick="event.stopPropagation()" data-name="${product.name}"data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stripe="${product.stripeLink || "#"}" data-images="${encodedImages}">${buttonText}</button>
+        
+            ${!isSold && !isComingSoon ? `
+ <button
+  onclick="event.stopPropagation()"
+  class="btn small add-cart-btn snipcart-add-item"
+  data-item-id="${product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}"
+  data-item-name="${product.name}"
+  data-item-price="${product.price.replace(/[^0-9.]/g, "")}"
+  data-item-description="${product.description}"
+  data-item-url="/shop.html"
+>
+  Add to Cart
+</button>
+` : ""}
+            </div>
         </article>
       `;
     }
@@ -447,7 +527,22 @@ window.SnipcartSettings = {
 
       if (!modal) return;
 
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.close();
+          document.body.classList.remove("modal-open");
+        }
+      });
+
       buttons.forEach((button) => {
+        const card = button.closest(".product-card");
+
+        if (card) {
+          card.addEventListener("click", () => {
+            button.click();
+          });
+        }
+
         button.addEventListener("click", () => {
           const images = JSON.parse(decodeURIComponent(button.dataset.images || "%5B%5D"));
           let currentImageIndex = 0;
@@ -495,6 +590,7 @@ modalBuy.setAttribute("data-item-url", "/shop.html");
           };
 
           updateModalImage();
+          document.body.classList.add("modal-open");
           modal.showModal();
         });
       });

@@ -458,4 +458,62 @@ input, textarea { width: 100%; padding: 14px; border: 1px solid #c9b9a4; border-
   .story-image-card img {
     height: 420px;
   }
+}.cart-button {
+  border: none;
+  background: transparent;
+  color: var(--cream);
+  border-radius: 0;
+  padding: 0;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: inherit;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease;
+}
+
+.cart-button:hover {
+  color: #fff;
+}
+
+.snipcart-items-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: var(--rust);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0 0.35rem;
+}
+
+.add-cart-btn {
+  background: var(--rust);
+  color: #fff;
+  border: 1px solid var(--rust);
+  margin-top: 12px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: Montserrat, Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-cart-btn:hover {
+  background: #a23d2d;
+  border-color: #a23d2d;
+  transform: translateY(-1px);
 }
