@@ -1,74 +1,18 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
-
-collections:
-  - name: "store"
-    label: "Store"
-    files:
-      - name: "products"
-        label: "Products"
-        file: "data/products.json"
-        format: "json"
-        fields:
-          - label: "Products"
-            name: "products"
-            widget: "list"
-            summary: "{{fields.name}} - {{fields.price}}"
-            fields:
-              - { label: "Product Name", name: "name", widget: "string" }
-              - { label: "Category", name: "category", widget: "select", options: ["cutting-boards", "charcuterie-boards", "cigar-ash-trays", "memory-boxes", "rolling-trays"] }
-              - { label: "Price", name: "price", widget: "string" }
-              - { label: "Wood", name: "wood", widget: "string", required: false }
-              - { label: "Size", name: "size", widget: "string", required: false }
-              - { label: "Finish", name: "finish", widget: "string", required: false }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Status", name: "status", widget: "select", options: ["available", "sold", "coming-soon"], default: "available" }
-              - { label: "Stripe Link", name: "stripeLink", widget: "string", required: false }
-              - label: "Images"
-                name: "images"
-                widget: "list"
-                required: false
-                field: { label: "Image", name: "image", widget: "image" }
 {
   "products": [
     {
-      "name": "Froggy Fresh",
-      "category": "cutting-boards",
-      "price": "$250",
-      "wood": "Black Limba",
-      "size": "12 in × 18 in × 1.25 in",
-      "finish": "Food-safe oil and wax",
-      "description": "This unique pattern using black limba created a fresh board that made our hearts jump around!",
-      "status": "available",
+      "size": "12x18",
       "stripeLink": "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00",
+      "price": "250",
+      "name": "Froggy Fresh ",
+      "wood": "Black Limba",
+      "status": "available",
       "images": [
         "/assets/uploads/froggy-fresh-1.jpeg",
         "/assets/uploads/froggy-fresh-2.jpeg"
-      ]
-    }
-  ]
-}
-    fetch("data/products.json?v=" + Date.now())
-{
-  "products": [
-    {
-      "name": "Froggy Fresh",
-      "category": "cutting-boards",
-      "price": "$250",
-      "wood": "Black Limba",
-      "size": "12 in × 18 in × 1.25 in",
-      "finish": "Food-safe oil and wax",
-      "description": "This unique pattern using black limba created a fresh board that made our hearts jump around!",
-      "status": "available",
-      "stripeLink": "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00",
-      "images": [
-        "/assets/uploads/froggy-fresh-1.jpeg",
-        "/assets/uploads/froggy-fresh-2.jpeg"
-      ]
+      ],
+      "description": "This froggy board couldn't get any more FRESH!",
+      "category": "cutting-boards"
     }
   ]
 }
