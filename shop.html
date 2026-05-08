@@ -253,7 +253,7 @@ window.SnipcartSettings = {
 <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
 
-<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky"></div> 
+<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky"></div> data-config-add-product-behavior="none"></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
       <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
@@ -265,6 +265,9 @@ window.SnipcartSettings = {
   <a href="our-story.html">Our Story</a>
   <a href="board-care.html">Board Care</a>
   <a href="custom-orders.html">Custom Orders</a>
+  <button class="cart-button snipcart-checkout" type="button" aria-label="Open shopping cart">
+  Cart <span class="snipcart-items-count">0</span>
+</button>
 </nav>
 
     <button class="menu-toggle" aria-label="Open menu">☰</button>
@@ -352,7 +355,7 @@ window.SnipcartSettings = {
         <li><strong>Finish:</strong> <span id="modalFinish"></span></li>
       </ul>
       <p>This is a one-of-one piece from Ollie Box Woodshop. No two pieces are ever the same.</p>
-      <button id="modalBuy" class="btn primary snipcart-add-item" type="button">Add to Cart</button>
+      <button id="modalBuy" class="btn primary snipcart-add-item" type="button" onclick="document.getElementById('productModal').close()">Add to Cart</button>
     </div>
   </dialog>
 
