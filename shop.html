@@ -319,7 +319,7 @@ window.SnipcartSettings = {
 <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
 
-<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky" data-config-add-product-behavior="none"></div>
+<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky" data-config-add-product-behavior="none" data-config-modal-style="side"></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
       <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
@@ -511,7 +511,7 @@ window.SnipcartSettings = {
   data-item-name="${product.name}"
   data-item-price="${product.price.replace(/[^0-9.]/g, "")}"
   data-item-description="${product.description}"
-  data-item-url="/shop.html"
+  data-item-url="https://ollieboxwoodshop.com/shop.html"
 >
   Add to Cart
 </button>
@@ -560,7 +560,7 @@ modalBuy.setAttribute("data-item-id", button.dataset.name.toLowerCase().replace(
 modalBuy.setAttribute("data-item-name", button.dataset.name);
 modalBuy.setAttribute("data-item-price", button.dataset.price.replace(/[^0-9.]/g, ""));
 modalBuy.setAttribute("data-item-description", button.dataset.description);
-modalBuy.setAttribute("data-item-url", "/shop.html");
+modalBuy.setAttribute("data-item-url", "https://ollieboxwoodshop.com/shop.html");
 
           const modalImage = document.getElementById("modalImage");
           const prevButton = document.getElementById("modalPrev");
