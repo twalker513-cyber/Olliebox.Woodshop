@@ -295,6 +295,12 @@
   padding: 0 0.35rem;
 }
 
+    .add-cart-btn.added {
+      background: #6f7f45;
+      border-color: #6f7f45;
+      color: #fff;
+    }
+
     @media (max-width: 850px) {
       .product-grid {
         grid-template-columns: 1fr;
@@ -503,11 +509,11 @@ window.SnipcartSettings = {
             <p class="price">${product.price}</p>
             <p>${product.description}</p>
             <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
-            <button class="${buttonClass}" onclick="event.stopPropagation()" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-images="${encodedImages}">${buttonText}</button>
+            <button class="${buttonClass}" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-images="${encodedImages}">${buttonText}</button>
         
             ${!isSold && !isComingSoon ? `
  <button
-  onclick="event.stopPropagation()"
+  onclick="showAddCartFeedback(this);"
   class="btn small add-cart-btn snipcart-add-item"
   data-item-id="${productId}"
   data-item-name="${product.name}"
@@ -521,6 +527,18 @@ window.SnipcartSettings = {
             </div>
         </article>
       `;
+    }
+
+    
+    function showAddCartFeedback(button) {
+      const originalText = button.textContent.trim();
+      button.textContent = "Added ✓";
+      button.classList.add("added");
+
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove("added");
+      }, 1400);
     }
 
     function setupProductModal() {
@@ -540,7 +558,8 @@ window.SnipcartSettings = {
         const card = button.closest(".product-card");
 
         if (card) {
-          card.addEventListener("click", () => {
+          card.addEventListener("click", (event) => {
+            if (event.target.closest("button") || event.target.closest("a")) return;
             button.click();
           });
         }
