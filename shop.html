@@ -123,6 +123,18 @@
       text-transform: uppercase;
     }
 
+    .product-image.has-photo {
+      background: rgba(245,239,226,.08);
+      overflow: hidden;
+    }
+
+    .product-image.has-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
     .product-image.walnut {
       background: linear-gradient(135deg, #2a160d, #7a4b2d);
     }
@@ -176,6 +188,46 @@
       background: rgba(245,239,226,.06);
       text-align: center;
       color: var(--muted);
+    }
+
+    .modal-image {
+      width: 100%;
+      min-height: 340px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: rgba(245,239,226,.08);
+      overflow: hidden;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-gallery-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .gallery-btn {
+      border: 1px solid var(--line);
+      background: rgba(245,239,226,.08);
+      color: var(--cream);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-family: Montserrat, Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
     }
 
     @media (max-width: 850px) {
@@ -319,11 +371,21 @@
       "rolling-trays": "No rolling trays are listed right now. New pieces will be added as they are finished."
     };
 
-    function getProductImages(product) {
-      if (Array.isArray(product.images)) return product.images;
-      if (product.image) return [product.image];
-      return [];
-    }
+  function getProductImages(product) {
+  if (Array.isArray(product.images)) {
+    return product.images
+      .map((item) => {
+        if (typeof item === "string") return item;
+        if (item && typeof item === "object" && item.image) return item.image;
+        return "";
+      })
+      .filter(Boolean);
+  }
+
+  if (product.image) return [product.image];
+
+  return [];
+}
 
     function getBadgeText(status) {
       if (status === "sold") return "Sold";
@@ -346,15 +408,14 @@
       const firstImage = images.length > 0 ? images[0] : "";
       const isSold = product.status === "sold";
       const isComingSoon = product.status === "coming-soon";
-      const imageStyle = firstImage ? `style="background-image: url('${firstImage}')"` : "";
-      const imageText = firstImage ? "" : "<span>Photo Coming Soon</span>";
+      const imageContent = firstImage ? `<img src="${firstImage}" alt="${product.name}">` : "<span>Photo Coming Soon</span>";
       const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "View Details";
       const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
       const encodedImages = encodeURIComponent(JSON.stringify(images));
 
       return `
         <article class="product-card ${isSold ? "sold" : ""}">
-          <div class="${getImageClass(product)}" ${imageStyle}>${imageText}</div>
+          <div class="${getImageClass(product)}">${imageContent}</div>
           <div class="product-info">
             <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product.status)}</span>
             <h3>${product.name}</h3>
@@ -392,15 +453,13 @@
 
           function updateModalImage() {
             if (!images.length) {
-              modalImage.style.backgroundImage = "";
               modalImage.innerHTML = "<span>Photo Coming Soon</span>";
               prevButton.style.display = "none";
               nextButton.style.display = "none";
               return;
             }
 
-            modalImage.innerHTML = "";
-            modalImage.style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            modalImage.innerHTML = `<img src="${images[currentImageIndex]}" alt="${button.dataset.name}">`;
             prevButton.style.display = images.length > 1 ? "inline-flex" : "none";
             nextButton.style.display = images.length > 1 ? "inline-flex" : "none";
           }
