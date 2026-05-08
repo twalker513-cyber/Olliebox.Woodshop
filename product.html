@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product | Ollie Box Woodshop</title>
+  <meta name="description" content="View handcrafted one-of-one woodworking pieces from Ollie Box Woodshop." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    window.SnipcartSettings = {
+      publicApiKey: "YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky",
+      loadStrategy: "on-user-interaction",
+      modalStyle: "side",
+    };
+  </script>
+
+  <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
+</head>
+
+<body>
+  <div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky" data-config-add-product-behavior="none" data-config-modal-style="side"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
+      <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+      <span>Ollie Box Woodshop</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="shop.html">Shop</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="board-care.html">Board Care</a>
+      <a href="custom-orders.html">Custom Orders</a>
+      <button class="cart-button snipcart-checkout" type="button" aria-label="Open shopping cart">
+        Cart <span class="snipcart-items-count">0</span>
+      </button>
+    </nav>
+
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+    <section class="section product-page-section">
+      <div id="productPage" class="product-page-card">
+        <p class="eyebrow">Ollie Box Woodshop</p>
+        <h1>Loading product...</h1>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+    <h2>Ollie Box Woodshop</h2>
+    <p>One-of-One Boards. Built With Heart.</p>
+
+    <div class="footer-links">
+      <a href="mailto:ollieboxwoodshop@gmail.com">Email</a>
+      <a href="https://instagram.com/ollieboxwoodshop" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="shop.html">Shop</a>
+    </div>
+
+    <small>© <span id="year"></span> Ollie Box Woodshop. All rights reserved.</small>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    function getProductIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
+
+    function getProductSlug(product) {
+      return product.id || product.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    }
+
+    function getSnipcartPrice(price) {
+      return String(price || "0").replace(/[^0-9.]/g, "") || "0";
+    }
+
+    function getProductImages(product) {
+      if (Array.isArray(product.images) && product.images.length) return product.images;
+      if (product.image) return [product.image];
+      return [];
+    }
+
+    function renderProduct(product) {
+      const productPage = document.getElementById("productPage");
+      const slug = getProductSlug(product);
+      const images = getProductImages(product);
+      const mainImage = images[0] || "assets/logo.jpeg";
+      const price = getSnipcartPrice(product.price);
+      const isSold = product.status === "sold";
+      const isComingSoon = product.status === "coming-soon";
+      const canBuy = !isSold && !isComingSoon;
+      const productUrl = `https://ollieboxwoodshop.com/product.html?id=${slug}`;
+
+      document.title = `${product.name} | Ollie Box Woodshop`;
+
+      productPage.innerHTML = `
+        <div class="product-page-grid">
+          <div class="product-page-image">
+            <img src="${mainImage}" alt="${product.name}">
+          </div>
+
+          <div class="product-page-info">
+            <p class="eyebrow">One-of-One Piece</p>
+            <h1>${product.name}</h1>
+            <p class="product-price">${product.price}</p>
+            <p>${product.description || "Handcrafted by Ollie Box Woodshop."}</p>
+
+            <div class="product-specs">
+              <p><strong>Wood:</strong> ${product.wood || "TBD"}</p>
+              <p><strong>Size:</strong> ${product.size || "TBD"}</p>
+              <p><strong>Finish:</strong> ${product.finish || "TBD"}</p>
+            </div>
+
+            ${canBuy ? `
+              <button
+                class="btn primary add-cart-btn snipcart-add-item"
+                data-item-id="${slug}"
+                data-item-name="${product.name}"
+                data-item-price="${price}"
+                data-item-description="${product.description || "Handcrafted by Ollie Box Woodshop."}"
+                data-item-image="${mainImage}"
+                data-item-url="${productUrl}"
+              >
+                Add to Cart
+              </button>
+            ` : `
+              <p class="product-unavailable">This piece is currently unavailable.</p>
+            `}
+
+            <a class="btn secondary" href="shop.html">Back to Shop</a>
+          </div>
+        </div>
+      `;
+    }
+
+    async function loadProductPage() {
+      const selectedId = getProductIdFromUrl();
+      const productPage = document.getElementById("productPage");
+
+      if (!selectedId) {
+        productPage.innerHTML = `
+          <p class="eyebrow">Product not found</p>
+          <h1>No product selected.</h1>
+          <p>Please return to the shop and choose a product.</p>
+          <a class="btn primary" href="shop.html">Back to Shop</a>
+        `;
+        return;
+      }
+
+      try {
+        const response = await fetch("data/products.json");
+        const products = await response.json();
+        const product = products.find((item) => getProductSlug(item) === selectedId);
+
+        if (!product) {
+          productPage.innerHTML = `
+            <p class="eyebrow">Product not found</p>
+            <h1>This product could not be found.</h1>
+            <p>It may have been removed, sold, or renamed.</p>
+            <a class="btn primary" href="shop.html">Back to Shop</a>
+          `;
+          return;
+        }
+
+        renderProduct(product);
+      } catch (error) {
+        productPage.innerHTML = `
+          <p class="eyebrow">Loading error</p>
+          <h1>We could not load this product.</h1>
+          <p>Please return to the shop and try again.</p>
+          <a class="btn primary" href="shop.html">Back to Shop</a>
+        `;
+      }
+    }
+
+    loadProductPage();
+  </script>
+</body>
+</html>

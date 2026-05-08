@@ -491,6 +491,8 @@ window.SnipcartSettings = {
       const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "View Details";
       const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
       const encodedImages = encodeURIComponent(JSON.stringify(images));
+      const productId = product.id || product.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const productUrl = `https://ollieboxwoodshop.com/product.html?id=${productId}`;
 
       return `
         <article class="product-card ${isSold ? "sold" : ""} ${!isSold && !isComingSoon ? "clickable-card" : ""}">
@@ -501,17 +503,17 @@ window.SnipcartSettings = {
             <p class="price">${product.price}</p>
             <p>${product.description}</p>
             <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
-            <button class="${buttonClass}" onclick="event.stopPropagation()" data-name="${product.name}"data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stripe="${product.stripeLink || "#"}" data-images="${encodedImages}">${buttonText}</button>
+            <button class="${buttonClass}" onclick="event.stopPropagation()" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-images="${encodedImages}">${buttonText}</button>
         
             ${!isSold && !isComingSoon ? `
  <button
   onclick="event.stopPropagation()"
   class="btn small add-cart-btn snipcart-add-item"
-  data-item-id="${product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}"
+  data-item-id="${productId}"
   data-item-name="${product.name}"
   data-item-price="${product.price.replace(/[^0-9.]/g, "")}"
   data-item-description="${product.description}"
-  data-item-url="https://ollieboxwoodshop.com/shop.html"
+  data-item-url="${productUrl}"
 >
   Add to Cart
 </button>
@@ -556,11 +558,11 @@ window.SnipcartSettings = {
           const modalBuy = document.getElementById("modalBuy");
 modalBuy.className = "btn primary snipcart-add-item";
 modalBuy.textContent = "Add to Cart";
-modalBuy.setAttribute("data-item-id", button.dataset.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"));
+modalBuy.setAttribute("data-item-id", button.dataset.id);
 modalBuy.setAttribute("data-item-name", button.dataset.name);
 modalBuy.setAttribute("data-item-price", button.dataset.price.replace(/[^0-9.]/g, ""));
 modalBuy.setAttribute("data-item-description", button.dataset.description);
-modalBuy.setAttribute("data-item-url", "https://ollieboxwoodshop.com/shop.html");
+modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/product.html?id=${button.dataset.id}`);
 
           const modalImage = document.getElementById("modalImage");
           const prevButton = document.getElementById("modalPrev");
