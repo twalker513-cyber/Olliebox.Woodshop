@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Orders | Ollie Box Woodshop</title>
+  <meta name="description" content="Request a custom handcrafted piece from Ollie Box Woodshop." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
+      <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+      <span>Ollie Box Woodshop</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="shop.html">Shop</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="board-care.html">Board Care</a>
+      <a href="custom-orders.html">Custom Orders</a>
+    </nav>
+
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+
+
+    <section class="section custom-section">
+
+      <div class="custom-content reveal">
+        <p class="eyebrow">Start the conversation</p>
+
+        <h2>Request a Custom Piece</h2>
+
+        <p>
+          Custom work is handled one piece at a time. The more detail you provide,
+          the easier it is for us to understand the style, size, and purpose of the piece you have in mind.
+        </p>
+
+        <p>
+          Common custom requests include cutting boards, charcuterie boards,
+          memory boxes, cigar trays, rolling trays, gifts, and one-of-one keepsake pieces.
+        </p>
+      </div>
+
+      <form
+        class="custom-form reveal"
+        action="mailto:ollieboxwoodshop@gmail.com"
+        method="post"
+        enctype="text/plain"
+      >
+
+        <label>
+          Name
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Type of piece
+          <input
+            type="text"
+            name="piece"
+            placeholder="Cutting board, memory box, cigar tray, etc."
+          >
+        </label>
+
+        <label>
+          Preferred size
+          <input
+            type="text"
+            name="size"
+            placeholder="Example: 12 x 18"
+          >
+        </label>
+
+        <label>
+          Preferred wood or style
+          <input
+            type="text"
+            name="wood"
+            placeholder="Walnut, maple, cherry, dark grain, light grain, etc."
+          >
+        </label>
+
+        <label>
+          Budget
+          <input
+            type="text"
+            name="budget"
+            placeholder="Example: $100–$250"
+          >
+        </label>
+
+        <label>
+          Timeline
+          <input
+            type="text"
+            name="timeline"
+            placeholder="Example: Needed by June 15"
+          >
+        </label>
+
+        <label>
+          Notes
+          <textarea
+            name="notes"
+            rows="6"
+            placeholder="Tell us about the piece, who it is for, any inspiration, personalization, or anything else you want us to know."
+          ></textarea>
+        </label>
+
+        <button class="btn primary" type="submit">
+          Send Custom Request
+        </button>
+
+      </form>
+    </section>
+
+    <section class="section story-section">
+
+      <div class="story-card reveal">
+
+        <p class="eyebrow">How it works</p>
+
+        <h2>The Custom Order Process</h2>
+
+        <p>
+          <strong>1. Send the request.</strong>
+          Share the type of piece, size, style, budget, and timeline.
+        </p>
+
+        <p>
+          <strong>2. We review the details.</strong>
+          We will follow up to confirm what is possible, discuss wood options,
+          and answer questions.
+        </p>
+
+        <p>
+          <strong>3. We build with intention.</strong>
+          Once approved, your piece is made with the same heart,
+          integrity, and no-shortcut standard as every Ollie Box piece.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer id="contact" class="footer">
+    <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+
+    <h2>Ollie Box Woodshop</h2>
+
+    <p>One-of-One Boards. Built With Heart.</p>
+
+    <div class="footer-links">
+      <a href="mailto:ollieboxwoodshop@gmail.com">Email</a>
+
+      <a
+        href="https://instagram.com/ollieboxwoodshop"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Instagram
+      </a>
+
+      <a href="shop.html">Shop</a>
+    </div>
+
+    <small>
+      © <span id="year"></span> Ollie Box Woodshop.
+      All rights reserved.
+    </small>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
