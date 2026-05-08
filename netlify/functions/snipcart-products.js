@@ -15,8 +15,21 @@ function getPriceNumber(price) {
   return Number(cleanedPrice || 0);
 }
 
-exports.handler = async function () {
+function buildSnipcartProduct(product) {
+  const id = getProductId(product);
+  const validationUrl = `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${id}`;
+
+  return {
+    id,
+    price: getPriceNumber(product.price),
+    url: validationUrl,
+    customFields: []
+  };
+}
+
+exports.handler = async function (event) {
   try {
+    const requestedId = event.queryStringParameters && event.queryStringParameters.id;
     const response = await fetch("https://ollieboxwoodshop.com/data/products.json");
 
     if (!response.ok) {
@@ -26,23 +39,33 @@ exports.handler = async function () {
     const data = await response.json();
     const products = Array.isArray(data) ? data : data.products || [];
 
-    const snipcartProducts = products
-      .filter((product) => product.status !== "sold" && product.status !== "coming-soon")
-      .map((product) => {
-        const id = getProductId(product);
+    const availableProducts = products.filter(
+      (product) => product.status !== "sold" && product.status !== "coming-soon"
+    );
 
+    if (requestedId) {
+      const product = availableProducts.find((item) => getProductId(item) === requestedId);
+
+      if (!product) {
         return {
-          id,
-          name: product.name,
-          price: getPriceNumber(product.price),
-          url: "https://ollieboxwoodshop.com/.netlify/functions/snipcart-products",
-          customFields: [],
-          description: product.description || "Handcrafted by Ollie Box Woodshop.",
-          image: Array.isArray(product.images) && product.images.length
-            ? product.images[0]
-            : product.image || "assets/logo.jpeg"
+          statusCode: 404,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          },
+          body: JSON.stringify({ error: "Product not found." })
         };
-      });
+      }
+
+      return {
+        statusCode: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify(buildSnipcartProduct(product))
+      };
+    }
 
     return {
       statusCode: 200,
@@ -50,7 +73,7 @@ exports.handler = async function () {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
       },
-      body: JSON.stringify(snipcartProducts)
+      body: JSON.stringify(availableProducts.map(buildSnipcartProduct))
     };
   } catch (error) {
     return {
