@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "id": "froggy-fresh",
       "size": "12x18",
       "stripeLink": "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00",
       "price": "$250",
@@ -16,6 +17,7 @@
       "category": "cutting-boards"
     },
     {
+      "id": "tjs-test-test-test",
       "size": "11x21",
       "stripeLink": "https://buy.stripe.com/test_eVq4gs0bhgee8CLaEi3VC01",
       "price": "$1,000",

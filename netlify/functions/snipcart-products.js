@@ -36,6 +36,7 @@ exports.handler = async function () {
           name: product.name,
           price: getPriceNumber(product.price),
           url: "https://ollieboxwoodshop.com/.netlify/functions/snipcart-products",
+          customFields: [],
           description: product.description || "Handcrafted by Ollie Box Woodshop.",
           image: Array.isArray(product.images) && product.images.length
             ? product.images[0]

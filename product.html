@@ -102,7 +102,7 @@
       const isSold = product.status === "sold";
       const isComingSoon = product.status === "coming-soon";
       const canBuy = !isSold && !isComingSoon;
-      const productUrl = `https://ollieboxwoodshop.com/product.html?id=${slug}`;
+      const productUrl = "https://ollieboxwoodshop.com/.netlify/functions/snipcart-products";
 
       document.title = `${product.name} | Ollie Box Woodshop`;
 
@@ -162,7 +162,8 @@
 
       try {
         const response = await fetch("data/products.json");
-        const products = await response.json();
+        const data = await response.json();
+        const products = Array.isArray(data) ? data : data.products || [];
         const product = products.find((item) => getProductSlug(item) === selectedId);
 
         if (!product) {
