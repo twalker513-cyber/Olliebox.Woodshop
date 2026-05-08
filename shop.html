@@ -243,6 +243,17 @@
 </head>
 
 <body>
+ <script>
+window.SnipcartSettings = {
+  publicApiKey: "YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky",
+  loadStrategy: "on-user-interaction",
+};
+</script>
+
+<script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
+
+<div hidden id="snipcart" data-api-key="YTI4NmY1ZGUtOWUxNy00MzVjLWI1ODAtMzYwZTI5MWE0ZTdlNjM5MTM4NjkxNjg4MDY2MTky"></div> 
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
       <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
@@ -341,7 +352,7 @@
         <li><strong>Finish:</strong> <span id="modalFinish"></span></li>
       </ul>
       <p>This is a one-of-one piece from Ollie Box Woodshop. No two pieces are ever the same.</p>
-      <a id="modalBuy" class="btn primary" href="#" target="_blank" rel="noreferrer">Buy This Piece</a>
+      <button id="modalBuy" class="btn primary snipcart-add-item" type="button">Add to Cart</button>
     </div>
   </dialog>
 
@@ -444,7 +455,14 @@
           document.getElementById("modalWood").textContent = button.dataset.wood;
           document.getElementById("modalSize").textContent = button.dataset.size;
           document.getElementById("modalFinish").textContent = button.dataset.finish;
-          document.getElementById("modalBuy").href = button.dataset.stripe || "#";
+          const modalBuy = document.getElementById("modalBuy");
+modalBuy.className = "btn primary snipcart-add-item";
+modalBuy.textContent = "Add to Cart";
+modalBuy.setAttribute("data-item-id", button.dataset.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"));
+modalBuy.setAttribute("data-item-name", button.dataset.name);
+modalBuy.setAttribute("data-item-price", button.dataset.price.replace(/[^0-9.]/g, ""));
+modalBuy.setAttribute("data-item-description", button.dataset.description);
+modalBuy.setAttribute("data-item-url", "/shop.html");
 
           const modalImage = document.getElementById("modalImage");
           const prevButton = document.getElementById("modalPrev");
