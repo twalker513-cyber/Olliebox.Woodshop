@@ -1,19 +1,32 @@
 {
   "products": [
     {
-      "name": "Froggy Fresh",
-      "category": "cutting-boards",
-      "price": "$250",
-      "wood": "Black Limba",
       "size": "12x18",
-      "finish": "Food-safe oil and wax",
-      "description": "This froggy board couldn't get any more FRESH!",
-      "status": "available",
       "stripeLink": "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00",
+      "price": "$250",
+      "name": "Froggy Fresh",
+      "wood": "Black Limba",
+      "status": "available",
+      "finish": "Food-safe oil and wax",
       "images": [
         "/assets/uploads/froggy-fresh-1.jpeg",
         "/assets/uploads/froggy-fresh-2.jpeg"
-      ]
+      ],
+      "description": "This froggy board couldn't get any more FRESH!",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "11x21",
+      "stripeLink": "https://buy.stripe.com/test_eVq4gs0bhgee8CLaEi3VC01",
+      "price": "1,000",
+      "name": "Tj's Test Test Test ",
+      "wood": "Walnut, Maple, and Blood Wood ",
+      "status": "available",
+      "images": [
+        "/assets/uploads/img_2244.jpeg"
+      ],
+      "description": "Feel the contrast of the light walnut with dark maple. This beautiful board has rounded edges and grroved in handles on the side to make lifting easier.",
+      "category": "cutting-boards"
     }
   ]
 }
