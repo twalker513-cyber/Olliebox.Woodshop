@@ -1,6 +1,3 @@
-const fs = require("fs");
-const path = require("path");
-
 function slugify(value) {
   return String(value || "")
     .toLowerCase()
@@ -20,9 +17,13 @@ function getPriceNumber(price) {
 
 exports.handler = async function () {
   try {
-    const productsPath = path.join(process.cwd(), "data", "products.json");
-    const file = fs.readFileSync(productsPath, "utf8");
-    const data = JSON.parse(file);
+    const response = await fetch("https://ollieboxwoodshop.com/data/products.json");
+
+    if (!response.ok) {
+      throw new Error(`Unable to fetch products.json. Status: ${response.status}`);
+    }
+
+    const data = await response.json();
     const products = Array.isArray(data) ? data : data.products || [];
 
     const snipcartProducts = products
