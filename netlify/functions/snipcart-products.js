@@ -37,7 +37,9 @@ exports.handler = async function () {
           price: getPriceNumber(product.price),
           url: "https://ollieboxwoodshop.com/.netlify/functions/snipcart-products",
           description: product.description || "Handcrafted by Ollie Box Woodshop.",
-          image: Array.isArray(product.images) && product.images.length ? product.images[0] : product.image || "assets/logo.jpeg"
+          image: Array.isArray(product.images) && product.images.length
+            ? product.images[0]
+            : product.image || "assets/logo.jpeg"
         };
       });
 
