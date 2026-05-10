@@ -41,10 +41,7 @@
       "status": "available",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2295.jpeg",
-        "/assets/uploads/img_2296.jpeg",
-        "/assets/uploads/img_2297.jpeg",
-        "/assets/uploads/img_2298.jpeg"
+        "/assets/uploads/img_2295.jpeg"
       ],
       "weight": 400,
       "id": "rizzler",
