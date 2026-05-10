@@ -4,13 +4,15 @@
       "size": "12x18",
       "stripeLink": "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00",
       "price": "$250",
-      "name": "Froggy Fresh",
+      "name": "Froggy Fresh ",
       "wood": "Black Limba",
       "status": "available",
       "finish": "Food-safe oil and wax",
+      "stock": 2,
       "images": [
-        "/assets/uploads/froggy-fresh-1.jpeg",
-        "/assets/uploads/froggy-fresh-2.jpeg"
+        "/assets/uploads/img_2276.jpeg",
+        "/assets/uploads/img_2278.jpeg",
+        "/assets/uploads/img_2280.jpeg"
       ],
       "weight": 8200,
       "id": "froggy-fresh",
@@ -20,9 +22,9 @@
     {
       "size": "8x8",
       "stripeLink": "https://buy.stripe.com/test_5kQaEQ1fld22cT16o23VC02",
-      "price": "$100",
-      "name": "Rizzler ",
-      "wood": "Oak ",
+      "price": "$150",
+      "name": "Abstract Thoughts ",
+      "wood": "Walnut, Maple, Purple Heart  ",
       "status": "available",
       "stock": 1,
       "images": [
