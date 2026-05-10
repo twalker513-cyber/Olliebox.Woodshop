@@ -18,21 +18,6 @@
       "category": "cutting-boards"
     },
     {
-      "size": "11x21",
-      "stripeLink": "https://buy.stripe.com/test_eVq4gs0bhgee8CLaEi3VC01",
-      "price": "$1,000",
-      "name": "Tj's Test Test Test ",
-      "wood": "Walnut, Maple, and Blood Wood ",
-      "status": "available",
-      "images": [
-        "/assets/uploads/img_2244.jpeg"
-      ],
-      "weight": 9500,
-      "id": "tjs-test-test-test",
-      "description": "Feel the contrast of the light walnut with dark maple. This beautiful board has rounded edges and grroved in handles on the side to make lifting easier. ",
-      "category": "cutting-boards"
-    },
-    {
       "size": "8x8",
       "stripeLink": "https://buy.stripe.com/test_5kQaEQ1fld22cT16o23VC02",
       "price": "$100",
@@ -41,7 +26,10 @@
       "status": "available",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2295.jpeg"
+        "/assets/uploads/img_2295.jpeg",
+        "/assets/uploads/img_2296.jpeg",
+        "/assets/uploads/img_2297.jpeg",
+        "/assets/uploads/img_2298.jpeg"
       ],
       "weight": 400,
       "id": "rizzler",
