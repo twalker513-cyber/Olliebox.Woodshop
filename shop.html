@@ -526,7 +526,7 @@ window.SnipcartSettings = {
 }
 
     function getBadgeText(status) {
-      if (status === "sold") return "Sold";
+      if (status === "sold") return "Sold Out";
       if (status === "coming-soon") return "Coming Soon";
       return "Only One Available";
     }
@@ -544,14 +544,14 @@ window.SnipcartSettings = {
     function createProductCard(product) {
       const images = getProductImages(product);
       const firstImage = images.length > 0 ? images[0] : "";
-      const isSold = product.status === "sold";
+      const isSold = product.status === "sold" || Number(product.stock || 0) <= 0;
       const isComingSoon = product.status === "coming-soon";
       const galleryControls = images.length > 1 ? `
         <button class="card-gallery-btn card-gallery-prev" type="button" aria-label="Previous image" data-gallery-direction="prev">‹</button>
         <button class="card-gallery-btn card-gallery-next" type="button" aria-label="Next image" data-gallery-direction="next">›</button>
       ` : "";
       const imageContent = firstImage ? `<img src="${firstImage}" alt="${product.name}" data-card-image>${galleryControls}` : "<span>Photo Coming Soon</span>";
-      const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "View Details";
+      const buttonText = isSold ? "Sold Out" : isComingSoon ? "Coming Soon" : "View Details";
       const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
       const encodedImages = encodeURIComponent(JSON.stringify(images));
       const productId = product.id || product.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
