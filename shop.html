@@ -137,6 +137,7 @@
     .product-image.has-photo {
       background: rgba(245,239,226,.08);
       overflow: hidden;
+      position: relative;
     }
 
     .product-image.has-photo img {
@@ -146,6 +147,40 @@
       object-position: top;
       display: block;
     }
+
+    .card-gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.55);
+      background: rgba(31,21,16,.72);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+      transition: 0.2s ease;
+    }
+
+    .card-gallery-btn:hover {
+      background: rgba(138,51,36,.9);
+      border-color: rgba(255,255,255,.8);
+    }
+
+    .card-gallery-prev {
+      left: 12px;
+    }
+
+    .card-gallery-next {
+      right: 12px;
+    }
+
 
     .product-image.walnut {
       background: linear-gradient(135deg, #2a160d, #7a4b2d);
@@ -214,6 +249,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      position: relative;
     }
 
     .modal-image img {
@@ -222,6 +258,39 @@
       max-height: 520px;
       object-fit: contain;
       display: block;
+    }
+
+    .modal-gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.55);
+      background: rgba(31,21,16,.72);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+      transition: 0.2s ease;
+    }
+
+    .modal-gallery-btn:hover {
+      background: rgba(138,51,36,.9);
+      border-color: rgba(255,255,255,.8);
+    }
+
+    .modal-gallery-prev {
+      left: 14px;
+    }
+
+    .modal-gallery-next {
+      right: 14px;
     }
 
     .product-modal {
@@ -237,23 +306,6 @@
       display: none;
     }
 
-    .modal-gallery-actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .gallery-btn {
-      border: 1px solid var(--line);
-      background: rgba(245,239,226,.08);
-      color: var(--cream);
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-family: Montserrat, Arial, sans-serif;
-      font-weight: 800;
-      cursor: pointer;
-    }
 
     .modal-close:focus,
     .modal-close:focus-visible {
@@ -410,13 +462,13 @@ window.SnipcartSettings = {
   </main>
 
   <dialog id="productModal" class="product-modal">
-    <button class="modal-close" aria-label="Close product details" onclick="document.getElementById('productModal').close(); document.body.classList.remove('modal-open');">×</button>
+    <button class="modal-close" aria-label="Close product details" onclick="document.getElementById('productModal').close(); document.body.classList.remove('modal-open'); document.onkeydown = null;">×</button>
     <div class="modal-body">
       <div class="modal-gallery">
-        <div id="modalImage" class="modal-image"><span>Photo Coming Soon</span></div>
-        <div class="modal-gallery-actions">
-          <button id="modalPrev" class="gallery-btn" type="button">Previous</button>
-          <button id="modalNext" class="gallery-btn" type="button">Next</button>
+        <div id="modalImage" class="modal-image">
+          <span>Photo Coming Soon</span>
+          <button id="modalPrev" class="modal-gallery-btn modal-gallery-prev" type="button" aria-label="Previous image">‹</button>
+          <button id="modalNext" class="modal-gallery-btn modal-gallery-next" type="button" aria-label="Next image">›</button>
         </div>
       </div>
 
@@ -495,7 +547,11 @@ window.SnipcartSettings = {
       const firstImage = images.length > 0 ? images[0] : "";
       const isSold = product.status === "sold";
       const isComingSoon = product.status === "coming-soon";
-      const imageContent = firstImage ? `<img src="${firstImage}" alt="${product.name}">` : "<span>Photo Coming Soon</span>";
+      const galleryControls = images.length > 1 ? `
+        <button class="card-gallery-btn card-gallery-prev" type="button" aria-label="Previous image" data-gallery-direction="prev">‹</button>
+        <button class="card-gallery-btn card-gallery-next" type="button" aria-label="Next image" data-gallery-direction="next">›</button>
+      ` : "";
+      const imageContent = firstImage ? `<img src="${firstImage}" alt="${product.name}" data-card-image>${galleryControls}` : "<span>Photo Coming Soon</span>";
       const buttonText = isSold ? "Sold" : isComingSoon ? "Coming Soon" : "View Details";
       const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
       const encodedImages = encodeURIComponent(JSON.stringify(images));
@@ -503,7 +559,7 @@ window.SnipcartSettings = {
       const productUrl = `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${productId}`;
 
       return `
-        <article class="product-card ${isSold ? "sold" : ""} ${!isSold && !isComingSoon ? "clickable-card" : ""}">
+        <article class="product-card ${isSold ? "sold" : ""} ${!isSold && !isComingSoon ? "clickable-card" : ""}" data-card-images="${encodedImages}" data-card-image-index="0">
           <div class="${getImageClass(product)}">${imageContent}</div>
           <div class="product-info">
             <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product.status)}</span>
@@ -543,6 +599,55 @@ window.SnipcartSettings = {
       }, 1400);
     }
 
+    function setupCardGalleries() {
+      document.querySelectorAll(".product-card[data-card-images]").forEach((card) => {
+        const images = JSON.parse(decodeURIComponent(card.dataset.cardImages || "%5B%5D"));
+        const image = card.querySelector("[data-card-image]");
+        const galleryButtons = card.querySelectorAll("[data-gallery-direction]");
+
+        if (!image || images.length < 2) return;
+
+        function changeCardImage(direction) {
+          let currentIndex = Number(card.dataset.cardImageIndex || 0);
+
+          if (direction === "next") {
+            currentIndex = (currentIndex + 1) % images.length;
+          } else {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+          }
+
+          card.dataset.cardImageIndex = currentIndex;
+          image.src = images[currentIndex];
+        }
+
+        galleryButtons.forEach((galleryButton) => {
+          galleryButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            changeCardImage(galleryButton.dataset.galleryDirection);
+          });
+        });
+
+        let cardTouchStartX = 0;
+
+        image.addEventListener("touchstart", (event) => {
+          cardTouchStartX = event.changedTouches[0].screenX;
+        }, { passive: true });
+
+        image.addEventListener("touchend", (event) => {
+          const cardTouchEndX = event.changedTouches[0].screenX;
+          const swipeDistance = cardTouchEndX - cardTouchStartX;
+
+          if (Math.abs(swipeDistance) < 45) return;
+
+          if (swipeDistance < 0) {
+            changeCardImage("next");
+          } else {
+            changeCardImage("prev");
+          }
+        }, { passive: true });
+      });
+    }
+
     function setupProductModal() {
       const modal = document.getElementById("productModal");
       const buttons = document.querySelectorAll(".product-details-button");
@@ -553,6 +658,7 @@ window.SnipcartSettings = {
         if (event.target === modal) {
           modal.close();
           document.body.classList.remove("modal-open");
+          document.onkeydown = null;
         }
       });
 
@@ -591,25 +697,70 @@ modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/.netlify/fu
 
           function updateModalImage() {
             if (!images.length) {
-              modalImage.innerHTML = "<span>Photo Coming Soon</span>";
+              const existingImage = modalImage.querySelector("img");
+              if (existingImage) existingImage.remove();
+              modalImage.querySelector("span").style.display = "inline";
               prevButton.style.display = "none";
               nextButton.style.display = "none";
               return;
             }
 
-            modalImage.innerHTML = `<img src="${images[currentImageIndex]}" alt="${button.dataset.name}">`;
+            modalImage.querySelector("span").style.display = "none";
+            const existingImage = modalImage.querySelector("img");
+            if (existingImage) {
+              existingImage.src = images[currentImageIndex];
+              existingImage.alt = button.dataset.name;
+            } else {
+              modalImage.insertAdjacentHTML("afterbegin", `<img src="${images[currentImageIndex]}" alt="${button.dataset.name}">`);
+            }
             prevButton.style.display = images.length > 1 ? "inline-flex" : "none";
             nextButton.style.display = images.length > 1 ? "inline-flex" : "none";
           }
 
-          prevButton.onclick = () => {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+          function changeModalImage(direction) {
+            if (images.length < 2) return;
+
+            if (direction === "next") {
+              currentImageIndex = (currentImageIndex + 1) % images.length;
+            } else {
+              currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            }
+
             updateModalImage();
+          }
+
+          prevButton.onclick = () => changeModalImage("prev");
+          nextButton.onclick = () => changeModalImage("next");
+
+          let modalTouchStartX = 0;
+
+          modalImage.ontouchstart = (event) => {
+            modalTouchStartX = event.changedTouches[0].screenX;
           };
 
-          nextButton.onclick = () => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            updateModalImage();
+          modalImage.ontouchend = (event) => {
+            const modalTouchEndX = event.changedTouches[0].screenX;
+            const swipeDistance = modalTouchEndX - modalTouchStartX;
+
+            if (Math.abs(swipeDistance) < 45) return;
+
+            if (swipeDistance < 0) {
+              changeModalImage("next");
+            } else {
+              changeModalImage("prev");
+            }
+          };
+
+          document.onkeydown = (event) => {
+            if (!modal.open) return;
+
+            if (event.key === "ArrowRight") {
+              changeModalImage("next");
+            }
+
+            if (event.key === "ArrowLeft") {
+              changeModalImage("prev");
+            }
           };
 
           updateModalImage();
@@ -634,6 +785,7 @@ modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/.netlify/fu
         grid.innerHTML = matchingProducts.map(createProductCard).join("");
       });
 
+      setupCardGalleries();
       setupProductModal();
     }
 
