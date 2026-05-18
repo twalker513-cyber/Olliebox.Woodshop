@@ -228,10 +228,10 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2391.jpeg",
-        "/assets/uploads/img_2392.jpeg",
         "/assets/uploads/img_2387.jpeg",
-        "/assets/uploads/img_2388.jpeg"
+        "/assets/uploads/img_2388.jpeg",
+        "/assets/uploads/img_2391.jpeg",
+        "/assets/uploads/img_2392.jpeg"
       ],
       "weight": 3308,
       "id": "the-mega-shocka",
@@ -307,6 +307,10 @@
       "status": "available",
       "finish": "Oil",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2422.jpeg",
+        "/assets/uploads/img_2423.jpeg"
+      ],
       "weight": 92,
       "id": "domestic-bottle-opener",
       "description": "Built from walnut, maple, and cherry, this bottle opener is made for good drinks and good company. The bold striped design and solid feel give it just the right amount of character, whether it’s opening a cold one at the lake, around the grill, or during a long night with friends.",
@@ -321,6 +325,10 @@
       "status": "available",
       "finish": "Oil",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2426.jpeg",
+        "/assets/uploads/img_2427.jpeg"
+      ],
       "weight": 97,
       "id": "exotic-bottle-opener",
       "description": "Built from a mix of maple, walnut, cherry, bloodwood, and purple heart, this bottle opener brings serious character to the party. The layered hardwood design gives every piece its own vibe, making it the perfect grab for cracking open cold drinks, kicking back, and keeping the good times rolling.",
