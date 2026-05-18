@@ -74,6 +74,85 @@
       "id": "hollow-eye",
       "description": "The Hollow Eye blends bold symmetry with the natural contrast of Zebra Wood and walnut. Its repeating stacked pattern creates a striking visual design while providing a durable cutting surface built for everyday use. A functional piece that stands out whether in use or on display.",
       "category": "cutting-boards"
+    },
+    {
+      "size": "14\" x 9\" x 5\"",
+      "stripeLink": "https://buy.stripe.com/eVq6oJ1Opgnp4A5gsKbV604",
+      "price": "$350",
+      "name": "The Heirloom ",
+      "wood": "Sapele Mahogany ",
+      "status": "available",
+      "finish": "Shallac",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2303.jpeg",
+        "/assets/uploads/img_2304.jpeg",
+        "/assets/uploads/img_2305.jpeg"
+      ],
+      "weight": 2761,
+      "id": "the-heirloom",
+      "description": "The Heirloom is a handcrafted valet box made from rich sapele mahogany and finished in shellac. The upper display compartment is perfect for glasses and everyday essentials, while the pull out drawer adds extra storage below. Built with timeless craftsmanship, it’s designed to be both functional and lasting.",
+      "category": "memory-boxes"
+    },
+    {
+      "size": "8 1/4\" x 5\" x 3\"",
+      "stripeLink": "https://buy.stripe.com/7sY14p1Op3AD5E92BUbV605",
+      "price": "$60",
+      "name": "Slippery Walnut ",
+      "wood": "Walnut body and Maple lid ",
+      "status": "available",
+      "finish": "Universal Oil Finish ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2307.jpeg",
+        "/assets/uploads/img_2306.jpeg",
+        "/assets/uploads/img_2308.jpeg",
+        "/assets/uploads/img_2309.jpeg"
+      ],
+      "weight": 391,
+      "id": "slippery-walnut",
+      "description": "Crafted with a walnut body and maple slide top, this handcrafted box combines clean design with everyday function. Its smooth sliding lid and timeless wood contrast make it perfect for storing keepsakes, accessories, or daily essentials.",
+      "category": "memory-boxes"
+    },
+    {
+      "size": "12 3/4\" x 7\" x 3/4\" w/ out handle ",
+      "stripeLink": "https://buy.stripe.com/4gMfZj3Wx3ADc2x7WebV606",
+      "price": "$110",
+      "name": "Zebra ",
+      "wood": "Zebra Wood ",
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2292.jpeg",
+        "/assets/uploads/img_2293.jpeg",
+        "/assets/uploads/img_2290.jpeg",
+        "/assets/uploads/img_2289.jpeg"
+      ],
+      "weight": 1071,
+      "id": "zebra",
+      "description": "Crafted from striking zebrawood, this handcrafted charcuterie board highlights the natural contrast and flowing grain unique to the species. Its sleek profile and handle design make it perfect for serving cheeses, meats, and appetizers with a clean, timeless presentation.",
+      "category": "charcuterie-boards"
+    },
+    {
+      "size": "8\" x 8\" x 1/2\"",
+      "stripeLink": "https://buy.stripe.com/5kQ00lct3gnpgiNb8qbV607",
+      "price": "$100",
+      "name": "Zebra's and Cigar's",
+      "wood": "Zebra Wood ",
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2310.jpeg",
+        "/assets/uploads/img_2312.jpeg",
+        "/assets/uploads/img_2316.jpeg",
+        "/assets/uploads/img_2314.jpeg"
+      ],
+      "weight": 836,
+      "id": "zebras-and-cigars",
+      "description": "Crafted from bold zebrawood in an end grain pattern, Zebra & Cigars is a handcrafted cigar ashtray designed to stand out. The rich contrast and layered grain create a striking centerpiece, while the deep rests and solid construction make it perfect for slow evenings and good conversation.",
+      "category": "cigar-ash-trays"
     }
   ]
 }
