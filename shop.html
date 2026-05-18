@@ -356,6 +356,24 @@
       color: #fff;
     }
 
+    .disabled-btn,
+    .sold-out-btn {
+      background: #777 !important;
+      border-color: #777 !important;
+      color: #eee !important;
+      cursor: not-allowed !important;
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    .disabled-btn:hover,
+    .sold-out-btn:hover {
+      background: #777 !important;
+      border-color: #777 !important;
+      color: #eee !important;
+      transform: none !important;
+    }
+
     @media (max-width: 850px) {
       .product-grid {
         grid-template-columns: 1fr;
@@ -538,9 +556,25 @@ window.SnipcartSettings = {
   return [];
 }
 
-    function getBadgeText(status) {
-      if (status === "sold") return "Sold Out";
-      if (status === "coming-soon") return "Coming Soon";
+    function getProductStock(product) {
+      if (product.inventory !== undefined && product.inventory !== null && product.inventory !== "") {
+        return Number(product.inventory);
+      }
+
+      if (product.stock !== undefined && product.stock !== null && product.stock !== "") {
+        return Number(product.stock);
+      }
+
+      return 1;
+    }
+
+    function isProductSoldOut(product) {
+      return product.status === "sold" || getProductStock(product) <= 0;
+    }
+
+    function getBadgeText(product) {
+      if (isProductSoldOut(product)) return "Sold Out";
+      if (product.status === "coming-soon") return "Coming Soon";
       return "Only One Available";
     }
 
@@ -557,7 +591,8 @@ window.SnipcartSettings = {
     function createProductCard(product) {
       const images = getProductImages(product);
       const firstImage = images.length > 0 ? images[0] : "";
-      const isSold = product.status === "sold" || Number(product.stock || 0) <= 0;
+      const productStock = getProductStock(product);
+      const isSold = isProductSoldOut(product);
       const isComingSoon = product.status === "coming-soon";
       const galleryControls = images.length > 1 ? `
         <button class="card-gallery-btn card-gallery-prev" type="button" aria-label="Previous image" data-gallery-direction="prev">‹</button>
@@ -574,12 +609,12 @@ window.SnipcartSettings = {
         <article class="product-card ${isSold ? "sold" : ""} ${!isSold && !isComingSoon ? "clickable-card" : ""}" data-card-images="${encodedImages}" data-card-image-index="0">
           <div class="${getImageClass(product)}">${imageContent}</div>
           <div class="product-info">
-            <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product.status)}</span>
+            <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product)}</span>
             <h3>${product.name}</h3>
             <p class="price">${product.price}</p>
             <p>${product.description}</p>
             <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
-            <button class="${buttonClass}" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stock="${product.stock || 1}" data-images="${encodedImages}">${buttonText}</button>
+            <button class="${buttonClass}" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stock="${productStock}" data-images="${encodedImages}" ${isSold || isComingSoon ? "disabled" : ""}>${buttonText}</button>
         
             ${!isSold && !isComingSoon ? `
  <button
@@ -590,7 +625,7 @@ window.SnipcartSettings = {
   data-item-price="${product.price.replace(/[^0-9.]/g, "")}"
   data-item-description="${product.description}"
   data-item-url="${productUrl}"
-  data-item-inventory="${product.stock || 1}"
+  data-item-inventory="${productStock}"
 >
   Add to Cart
 </button>
@@ -696,14 +731,34 @@ window.SnipcartSettings = {
           document.getElementById("modalSize").textContent = button.dataset.size;
           document.getElementById("modalFinish").textContent = button.dataset.finish;
           const modalBuy = document.getElementById("modalBuy");
-modalBuy.className = "btn primary snipcart-add-item";
-modalBuy.textContent = "Add to Cart";
-modalBuy.setAttribute("data-item-id", button.dataset.id);
-modalBuy.setAttribute("data-item-name", button.dataset.name);
-modalBuy.setAttribute("data-item-price", button.dataset.price.replace(/[^0-9.]/g, ""));
-modalBuy.setAttribute("data-item-description", button.dataset.description);
-modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${button.dataset.id}`);
-modalBuy.setAttribute("data-item-inventory", button.dataset.stock || "1");
+          const modalStock = Number(button.dataset.stock || 0);
+
+          modalBuy.onclick = () => {
+            document.getElementById('productModal').close();
+            document.body.classList.remove('modal-open');
+          };
+
+          if (modalStock <= 0) {
+            modalBuy.className = "btn primary sold-out-btn";
+            modalBuy.textContent = "Sold Out";
+            modalBuy.disabled = true;
+            modalBuy.removeAttribute("data-item-id");
+            modalBuy.removeAttribute("data-item-name");
+            modalBuy.removeAttribute("data-item-price");
+            modalBuy.removeAttribute("data-item-description");
+            modalBuy.removeAttribute("data-item-url");
+            modalBuy.removeAttribute("data-item-inventory");
+          } else {
+            modalBuy.className = "btn primary snipcart-add-item";
+            modalBuy.textContent = "Add to Cart";
+            modalBuy.disabled = false;
+            modalBuy.setAttribute("data-item-id", button.dataset.id);
+            modalBuy.setAttribute("data-item-name", button.dataset.name);
+            modalBuy.setAttribute("data-item-price", button.dataset.price.replace(/[^0-9.]/g, ""));
+            modalBuy.setAttribute("data-item-description", button.dataset.description);
+            modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${button.dataset.id}`);
+            modalBuy.setAttribute("data-item-inventory", button.dataset.stock || "1");
+          }
 
           const modalImage = document.getElementById("modalImage");
           const prevButton = document.getElementById("modalPrev");

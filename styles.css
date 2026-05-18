@@ -529,3 +529,22 @@ input, textarea { width: 100%; padding: 14px; border: 1px solid #c9b9a4; border-
   border-color: #a23d2d;
   transform: translateY(-1px);
 }
+
+
+.disabled-btn,
+.sold-out-btn {
+  background: #777 !important;
+  border-color: #777 !important;
+  color: #eee !important;
+  cursor: not-allowed !important;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.disabled-btn:hover,
+.sold-out-btn:hover {
+  background: #777 !important;
+  border-color: #777 !important;
+  color: #eee !important;
+  transform: none !important;
+}
