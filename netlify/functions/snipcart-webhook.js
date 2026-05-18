@@ -1,6 +1,106 @@
+
+const PRODUCTS_PATH = "data/products.json";
+const DEFAULT_BRANCH = process.env.GITHUB_BRANCH || "main";
+
+async function githubRequest(path, options = {}) {
+  const owner = process.env.GITHUB_OWNER;
+  const repo = process.env.GITHUB_REPO;
+  const token = process.env.GITHUB_TOKEN;
+
+  if (!owner || !repo || !token) {
+    throw new Error(
+      "Missing GitHub environment variables. Add GITHUB_OWNER, GITHUB_REPO, and GITHUB_TOKEN in Netlify."
+    );
+  }
+
+  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}${path}`, {
+    ...options,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...(options.headers || {}),
+    },
+  });
+
+  const text = await response.text();
+  const data = text ? JSON.parse(text) : null;
+
+  if (!response.ok) {
+    throw new Error(data?.message || `GitHub request failed with status ${response.status}`);
+  }
+
+  return data;
+}
+
+function decodeBase64(content) {
+  return Buffer.from(content, "base64").toString("utf8");
+}
+
+function encodeBase64(content) {
+  return Buffer.from(content, "utf8").toString("base64");
+}
+
+function getPurchasedItems(payload) {
+  return payload.content?.items || [];
+}
+
+function getPurchasedQuantity(item) {
+  return Number(item.quantity || item.qty || 1);
+}
+
+function updateProductInventory(productsData, purchasedItems) {
+  const products = Array.isArray(productsData) ? productsData : productsData.products || [];
+  const purchasedMap = new Map();
+
+  purchasedItems.forEach((item) => {
+    const id = item.id;
+    const quantity = getPurchasedQuantity(item);
+
+    if (!id || quantity <= 0) return;
+
+    purchasedMap.set(id, (purchasedMap.get(id) || 0) + quantity);
+  });
+
+  let changed = false;
+
+  const updatedProducts = products.map((product) => {
+    const quantityPurchased = purchasedMap.get(product.id);
+
+    if (!quantityPurchased) return product;
+
+    const currentStock = Number(product.stock || 0);
+    const newStock = Math.max(currentStock - quantityPurchased, 0);
+
+    changed = true;
+
+    return {
+      ...product,
+      stock: newStock,
+      ...(newStock <= 0 ? { status: "sold" } : {}),
+    };
+  });
+
+  if (!changed) {
+    return { changed: false, productsData };
+  }
+
+  if (Array.isArray(productsData)) {
+    return { changed: true, productsData: updatedProducts };
+  }
+
+  return {
+    changed: true,
+    productsData: {
+      ...productsData,
+      products: updatedProducts,
+    },
+  };
+}
+
 exports.handler = async (event) => {
   try {
-    // Only allow POST requests
     if (event.httpMethod !== "POST") {
       return {
         statusCode: 405,
@@ -8,23 +108,54 @@ exports.handler = async (event) => {
       };
     }
 
-    // Parse Snipcart webhook payload
     const payload = JSON.parse(event.body || "{}");
 
     console.log("Snipcart webhook received:", payload.eventName);
 
-    // Handle completed orders
-    if (payload.eventName === "order.completed") {
-      const items = payload.content?.items || [];
-
-      items.forEach((item) => {
-        console.log(`Purchased product: ${item.id}`);
-      });
+    if (payload.eventName !== "order.completed") {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ success: true, ignored: true }),
+      };
     }
+
+    const purchasedItems = getPurchasedItems(payload);
+
+    if (!purchasedItems.length) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ success: true, message: "No purchased items found." }),
+      };
+    }
+
+    const file = await githubRequest(`/contents/${PRODUCTS_PATH}?ref=${DEFAULT_BRANCH}`);
+    const productsData = JSON.parse(decodeBase64(file.content));
+    const updateResult = updateProductInventory(productsData, purchasedItems);
+
+    if (!updateResult.changed) {
+      console.log("No matching products found to update.");
+
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ success: true, message: "No matching products found." }),
+      };
+    }
+
+    await githubRequest(`/contents/${PRODUCTS_PATH}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        message: "Update inventory after Snipcart order",
+        content: encodeBase64(`${JSON.stringify(updateResult.productsData, null, 2)}\n`),
+        sha: file.sha,
+        branch: DEFAULT_BRANCH,
+      }),
+    });
+
+    console.log("Inventory updated successfully.");
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true }),
+      body: JSON.stringify({ success: true, message: "Inventory updated." }),
     };
   } catch (error) {
     console.error("Webhook error:", error);
