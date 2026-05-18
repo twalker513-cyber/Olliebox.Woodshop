@@ -207,6 +207,12 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2400.jpeg",
+        "/assets/uploads/img_2401.jpeg",
+        "/assets/uploads/img_2402.jpeg",
+        "/assets/uploads/img_2403.jpeg"
+      ],
       "weight": 787,
       "id": "cherry-charcuterie",
       "description": "Made from rich cherry wood, this charcuterie board brings a warm tone and timeless simplicity to any gathering. Its clean profile and natural grain make it perfect for serving cheeses, meats, and appetizers with an elegant presentation.",
@@ -221,6 +227,12 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2387.jpeg",
+        "/assets/uploads/img_2388.jpeg",
+        "/assets/uploads/img_2391.jpeg",
+        "/assets/uploads/img_2392.jpeg"
+      ],
       "weight": 3308,
       "id": "the-mega-shocka",
       "description": "The Mega Shocka! This board is all good vibes with a bold maple skeleton shaka inlay set into rich walnut. Clean contrast, smooth lines, and just the right amount of attitude make it a killer centerpiece whether you’re throwing food on it after a long day or just letting it steal the show.",
@@ -235,6 +247,12 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2404.jpeg",
+        "/assets/uploads/img_2405.jpeg",
+        "/assets/uploads/img_2406.jpeg",
+        "/assets/uploads/img_2407.jpeg"
+      ],
       "weight": 728,
       "id": "walnut-1",
       "description": "Cut from solid walnut, this charcuterie board showcases rich dark tones and natural grain variation that make each piece one of a kind. Its sleek profile and balanced shape create a refined serving board that feels equally at home on display or at the center of a gathering.",
@@ -249,6 +267,12 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2408.jpeg",
+        "/assets/uploads/img_2409.jpeg",
+        "/assets/uploads/img_2410.jpeg",
+        "/assets/uploads/img_2411.jpeg"
+      ],
       "weight": 819,
       "id": "walnut-2",
       "description": "This walnut charcuterie board features deep espresso tones and bold grain patterns that give each piece its own character. Designed with a clean tapered profile and smooth finish, it’s a timeless serving board built for both everyday use and special gatherings.",
@@ -263,6 +287,12 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2412.jpeg",
+        "/assets/uploads/img_2413.jpeg",
+        "/assets/uploads/img_2414.jpeg",
+        "/assets/uploads/img_2415.jpeg"
+      ],
       "weight": 843,
       "id": "walnut-3",
       "description": "Featuring striking contrast between dark and warm walnut tones, this charcuterie board highlights the natural depth and movement of the wood grain. Its elongated profile and smooth finish create a refined serving piece designed for both display and entertaining.",
