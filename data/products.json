@@ -251,6 +251,34 @@
       "id": "walnut-3",
       "description": "Featuring striking contrast between dark and warm walnut tones, this charcuterie board highlights the natural depth and movement of the wood grain. Its elongated profile and smooth finish create a refined serving piece designed for both display and entertaining.",
       "category": "charcuterie-boards"
+    },
+    {
+      "size": "5 5/8\" x 1 7/8\" x 3/4\"",
+      "stripeLink": "https://buy.stripe.com/cNi28tgJj9Z12rXgsKbV60f",
+      "price": "$40",
+      "name": "Domestic Bottle Opener ",
+      "wood": "Walnut, Maple, and Cherry ",
+      "status": "available",
+      "finish": "Oil",
+      "stock": 1,
+      "weight": 92,
+      "id": "domestic-bottle-opener",
+      "description": "Built from walnut, maple, and cherry, this bottle opener is made for good drinks and good company. The bold striped design and solid feel give it just the right amount of character, whether it’s opening a cold one at the lake, around the grill, or during a long night with friends.",
+      "category": "bottle-openers"
+    },
+    {
+      "size": "4 1/4\" x 1 7/8\" x 7/8\"",
+      "stripeLink": "https://buy.stripe.com/6oUfZj8cN3AD0jPgsKbV60g",
+      "price": "$40",
+      "name": "Exotic Bottle Opener ",
+      "wood": "Maple, Walnut, Cherry, Bloodwood, and Purple Heart",
+      "status": "available",
+      "finish": "Oil",
+      "stock": 1,
+      "weight": 97,
+      "id": "exotic-bottle-opener",
+      "description": "Built from a mix of maple, walnut, cherry, bloodwood, and purple heart, this bottle opener brings serious character to the party. The layered hardwood design gives every piece its own vibe, making it the perfect grab for cracking open cold drinks, kicking back, and keeping the good times rolling.",
+      "category": "bottle-openers"
     }
   ]
 }
