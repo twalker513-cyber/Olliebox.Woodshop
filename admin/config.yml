@@ -35,6 +35,9 @@ collections:
                 name: "images"
                 widget: "list"
                 required: false
-                summary: "Photo"
-                hint: "Tip: upload all product photos to the Media Library first, then add/select them here. Put the main product photo first."
-                field: { label: "Select Photo", name: "image", widget: "image" }
+                min: 4
+                max: 4
+                summary: "Photo {{fields.image}}"
+                hint: "Use these four photo slots for each product. Put the main product photo first. If you only have fewer than four photos, leave unused image slots blank before saving."
+                fields:
+                  - { label: "Select Photo", name: "image", widget: "image", required: false }
