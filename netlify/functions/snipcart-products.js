@@ -39,9 +39,15 @@ exports.handler = async function (event) {
     const data = await response.json();
     const products = Array.isArray(data) ? data : data.products || [];
 
-    const availableProducts = products.filter(
-      (product) => product.status !== "sold" && product.status !== "coming-soon"
-    );
+    const availableProducts = products.filter((product) => {
+      const stock = Number(product.stock || 0);
+
+      return (
+        product.status !== "sold" &&
+        product.status !== "coming-soon" &&
+        stock > 0
+      );
+    });
 
     if (requestedId) {
       const product = availableProducts.find((item) => getProductId(item) === requestedId);
