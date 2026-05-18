@@ -1,4 +1,3 @@
-
 const PRODUCTS_PATH = "data/products.json";
 const DEFAULT_BRANCH = process.env.GITHUB_BRANCH || "main";
 
@@ -50,12 +49,16 @@ function getPurchasedQuantity(item) {
   return Number(item.quantity || item.qty || 1);
 }
 
+function normalizeProductId(id) {
+  return String(id || "").trim().toLowerCase();
+}
+
 function updateProductInventory(productsData, purchasedItems) {
   const products = Array.isArray(productsData) ? productsData : productsData.products || [];
   const purchasedMap = new Map();
 
   purchasedItems.forEach((item) => {
-    const id = item.id;
+    const id = normalizeProductId(item.id);
     const quantity = getPurchasedQuantity(item);
 
     if (!id || quantity <= 0) return;
@@ -66,7 +69,7 @@ function updateProductInventory(productsData, purchasedItems) {
   let changed = false;
 
   const updatedProducts = products.map((product) => {
-    const quantityPurchased = purchasedMap.get(product.id);
+    const quantityPurchased = purchasedMap.get(normalizeProductId(product.id));
 
     if (!quantityPurchased) return product;
 
