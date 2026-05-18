@@ -35,7 +35,5 @@ collections:
                 name: "images"
                 widget: "list"
                 required: false
-                summary: "Photo {{fields.image}}"
                 hint: "Add product photos here. Put the main product photo first. For the fastest workflow, upload all photos to the Media Library first, then select them here."
-                fields:
-                  - { label: "Select Photo", name: "image", widget: "image", required: false }
+                field: { label: "Select Photo", name: "image", widget: "image", required: false }
