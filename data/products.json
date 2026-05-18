@@ -1,32 +1,13 @@
 {
   "products": [
     {
-      "size": "12x18",
-      "stripeLink": "https://buy.stripe.com/test_8x200c6zF9PQaKTbIm3VC00",
-      "price": "$250",
-      "name": "Froggy Fresh ",
-      "wood": "Black Limba",
-      "status": "available",
-      "finish": "Food-safe oil and wax",
-      "stock": 2,
-      "images": [
-        "/assets/uploads/img_2276.jpeg",
-        "/assets/uploads/img_2278.jpeg",
-        "/assets/uploads/img_2280.jpeg"
-      ],
-      "weight": 8200,
-      "id": "froggy-fresh",
-      "description": "This froggy board couldn't get any more FRESH!",
-      "category": "cutting-boards"
-    },
-    {
-      "size": "14\" x 7\" x 3/4\"",
-      "stripeLink": "https://buy.stripe.com/test_5kQaEQ1fld22cT16o23VC02",
+      "size": "15 3/4 x 8 1/8 x 5/8",
+      "stripeLink": "https://buy.stripe.com/8x2bJ364F5ILc2x90ibV600",
       "price": "$150",
       "name": "Abstract Thoughts ",
-      "wood": "Walnut, Maple, Purple Heart  ",
+      "wood": "Oak, Walnut, Cherry, Purple Heart, Bloodwood, and Mahogany ",
       "status": "available",
-      "finish": "",
+      "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
         "/assets/uploads/img_2295.jpeg",
@@ -34,105 +15,10 @@
         "/assets/uploads/img_2297.jpeg",
         "/assets/uploads/img_2298.jpeg"
       ],
-      "weight": 400,
-      "id": "rizzler",
-      "description": "Take pride in your work. Rolling can get messy, don't let that happen. Check out this custom rolling tray that gives us some abstract thoughts. Two multi-size spots on the left for your grinder or jar. One spot made for a lighter. Three spots to hold your cones. A slot for rolling papers. Enjoy! \n",
+      "weight": 770,
+      "id": "abstract-thoughts",
+      "description": "We know rolling can get messy. This custom rolling tray keeps everything organized with two cutouts for your jar or grinder, plus dedicated spots for your lighter, cones, and papers. The chaos pattern helped to bring out our abstract thoughts!",
       "category": "rolling-trays"
-    },
-    {
-      "price": "$100",
-      "name": "Ash Tray ",
-      "status": "available",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2310.jpeg",
-        "/assets/uploads/img_2316.jpeg",
-        "/assets/uploads/img_2312.jpeg",
-        "/assets/uploads/img_2313.jpeg",
-        "/assets/uploads/img_2314.jpeg"
-      ],
-      "weight": 500,
-      "id": "ash-tray",
-      "description": "Ash tray with convenient spots to hold your cigar. ",
-      "category": "cigar-ash-trays"
-    },
-    {
-      "price": "$300",
-      "name": "Basket Weaving ",
-      "status": "available",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2283.jpeg",
-        "/assets/uploads/img_2284.jpeg",
-        "/assets/uploads/img_2285.jpeg",
-        "/assets/uploads/img_2286.jpeg"
-      ],
-      "weight": 3000,
-      "id": "basket-weave",
-      "description": "Basket weave designed curtting board ",
-      "category": "cutting-boards"
-    },
-    {
-      "price": "$300",
-      "name": "Brewing Storm ",
-      "status": "available",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2317.jpeg",
-        "/assets/uploads/img_2318.jpeg",
-        "/assets/uploads/img_2319.jpeg"
-      ],
-      "weight": 1500,
-      "id": "brewing-storm",
-      "description": "Enjoy this beautiful epoxy charcuterie board. Disclaimer: This is not a cutting board.",
-      "category": "charcuterie-boards"
-    },
-    {
-      "price": "$450",
-      "name": "Large Memory Box ",
-      "status": "available",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2303.jpeg",
-        "/assets/uploads/img_2304.jpeg",
-        "/assets/uploads/img_2305.jpeg"
-      ],
-      "weight": 2500,
-      "id": "large-memory-box",
-      "description": "Large box for safekeeping items. Top currently set up to hold glasses. Single drawer. ",
-      "category": "memory-boxes"
-    },
-    {
-      "size": "L 8 1/4\" x 5 W 1/8\" x H 3\"",
-      "price": "$50",
-      "name": "Small Safekeeping Box ",
-      "status": "available",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2309.jpeg",
-        "/assets/uploads/img_2307.jpeg",
-        "/assets/uploads/img_2306.jpeg"
-      ],
-      "weight": 500,
-      "id": "small-safekeeping-box",
-      "description": "Samll box with slide lid to use for keeping small items. ",
-      "category": "memory-boxes"
-    },
-    {
-      "price": "$150",
-      "name": "Charcuterie with Handle ",
-      "status": "available",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2292.jpeg",
-        "/assets/uploads/img_2293.jpeg",
-        "/assets/uploads/img_2290.jpeg",
-        "/assets/uploads/img_2289.jpeg"
-      ],
-      "weight": 1500,
-      "id": "charcuterie-with-handle",
-      "description": "Samller charcuterie board with handle for serving. ",
-      "category": "charcuterie-boards"
     }
   ]
 }
