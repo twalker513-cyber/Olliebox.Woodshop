@@ -49,7 +49,12 @@
       "status": "available",
       "finish": "Oil and Wax",
       "stock": 1,
-      "images": [],
+      "images": [
+        "/assets/uploads/img_2383.jpeg",
+        "/assets/uploads/img_2384.jpeg",
+        "/assets/uploads/img_2385.jpeg",
+        "/assets/uploads/img_2386.jpeg"
+      ],
       "weight": 2910,
       "id": "froggy-fresh",
       "description": "Froggy Fresh brings together natural movement and bold character in a one of a kind design. Crafted from Black Limba, the repeating stacked pattern highlights the wood’s unique grain while creating a durable cutting surface built for everyday use. Finished with a built in juice groove, this board is made to stand out in any kitchen.",
@@ -163,6 +168,12 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2394.jpeg",
+        "/assets/uploads/img_2395.jpeg",
+        "/assets/uploads/img_2396.jpeg",
+        "/assets/uploads/img_2397.jpeg"
+      ],
       "weight": 703,
       "id": "the-ambrosia",
       "description": "Made from ambrosia maple, this charcuterie board highlights the natural markings and unique character of the wood. Its clean silhouette and timeless design make it perfect for serving cheeses, meats, and appetizers with a warm, rustic feel.",
@@ -177,6 +188,11 @@
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
+      "images": [
+        "/assets/uploads/img_2416.jpeg",
+        "/assets/uploads/img_2417.jpeg",
+        "/assets/uploads/img_2418.jpeg"
+      ],
       "weight": 1097,
       "id": "blue-roller",
       "description": "Made from oak with a live edge design and deep blue resin, this rolling tray blends natural character with bold contrast. Designed with dedicated spots for your essentials, it keeps everything organized while bringing a clean, functional centerpiece to your setup.",
