@@ -19,6 +19,61 @@
       "id": "abstract-thoughts",
       "description": "We know rolling can get messy. This custom rolling tray keeps everything organized with two cutouts for your jar or grinder, plus dedicated spots for your lighter, cones, and papers. The chaos pattern helped to bring out our abstract thoughts!",
       "category": "rolling-trays"
+    },
+    {
+      "size": "17\" x 12 1/2\" x 1 3/4\"",
+      "stripeLink": "https://buy.stripe.com/fZu5kF64F6MP9Up2BUbV601",
+      "price": "$320",
+      "name": "Bob and Weave ",
+      "wood": "Maple and Walnut ",
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2283.jpeg",
+        "/assets/uploads/img_2284.jpeg",
+        "/assets/uploads/img_2285.jpeg",
+        "/assets/uploads/img_2286.jpeg"
+      ],
+      "weight": 3694,
+      "id": "bob-and-weave",
+      "description": "Bob and Weave combines bold geometry with classic craftsmanship. The woven end grain pattern gives this cutting board a striking look while providing a durable surface built for everyday use. Complete with a built in juice groove, it’s designed to perform beautifully while standing out on your countertop.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "17\" x 12\" x 1 1/2\"",
+      "stripeLink": "https://buy.stripe.com/6oUeVf64Fdbdd6B3FYbV602",
+      "price": "$230",
+      "name": "Froggy Fresh ",
+      "wood": "Black Limba ",
+      "status": "available",
+      "finish": "Oil and Wax",
+      "stock": 1,
+      "images": [],
+      "weight": 2910,
+      "id": "froggy-fresh",
+      "description": "Froggy Fresh brings together natural movement and bold character in a one of a kind design. Crafted from Black Limba, the repeating stacked pattern highlights the wood’s unique grain while creating a durable cutting surface built for everyday use. Finished with a built in juice groove, this board is made to stand out in any kitchen.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "15 3/4\" x 10 3/4\" x 1 1/2\"",
+      "stripeLink": "https://buy.stripe.com/3cI6oJ78J1sv1nTekCbV603",
+      "price": "$145",
+      "name": "The Hollow Eye ",
+      "wood": "Zebra Wood and Walnut",
+      "status": "available",
+      "finish": "Mineral Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2276.jpeg",
+        "/assets/uploads/img_2277.jpeg",
+        "/assets/uploads/img_2278.jpeg",
+        "/assets/uploads/img_2280.jpeg"
+      ],
+      "weight": 3033,
+      "id": "hollow-eye",
+      "description": "The Hollow Eye blends bold symmetry with the natural contrast of Zebra Wood and walnut. Its repeating stacked pattern creates a striking visual design while providing a durable cutting surface built for everyday use. A functional piece that stands out whether in use or on display.",
+      "category": "cutting-boards"
     }
   ]
 }
