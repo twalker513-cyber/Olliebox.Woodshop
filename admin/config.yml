@@ -21,7 +21,7 @@ collections:
             fields:
               - { label: "Product Name", name: "name", widget: "string" }
               - { label: "Product ID", name: "id", widget: "string", hint: "Unique ID used for checkout and product URLs. Example: froggy-fresh" }
-              - { label: "Category", name: "category", widget: "select", options: [{ label: "Cutting Boards", value: "cutting-boards" }, { label: "Charcuterie Boards", value: "charcuterie-boards" }, { label: "Cigar Ash Trays", value: "cigar-ash-trays" }, { label: "Specialty Boxes", value: "memory-boxes" }, { label: "Rolling Trays", value: "rolling-trays" }] }
+              - { label: "Category", name: "category", widget: "select", options: [{ label: "Cutting Boards", value: "cutting-boards" }, { label: "Charcuterie Boards", value: "charcuterie-boards" }, { label: "Cigar Ash Trays", value: "cigar-ash-trays" }, { label: "Specialty Boxes", value: "memory-boxes" }, { label: "Rolling Trays", value: "rolling-trays" }, { label: "Bottle Openers", value: "bottle-openers" }] }
               - { label: "Price", name: "price", widget: "string" }
               - { label: "Shipping Weight (grams)", name: "weight", widget: "number", value_type: "int", required: false, hint: "Use FINAL packed shipping weight in grams. Example: 8200 = about 18 lb packed." }
               - { label: "Quantity In Stock", name: "stock", widget: "number", value_type: "int", default: 1, required: false, hint: "Set how many of this product are available for purchase." }
