@@ -33,6 +33,42 @@ async function githubRequest(path, options = {}) {
   return data;
 }
 
+async function snipcartInventoryRequest(productId, stock) {
+  const apiKey = process.env.SNIPCART_SECRET_API_KEY;
+
+  if (!apiKey) {
+    console.log("Skipping Snipcart inventory sync. Missing SNIPCART_SECRET_API_KEY in Netlify.");
+    return { skipped: true };
+  }
+
+  const auth = Buffer.from(`${apiKey}:`).toString("base64");
+  const response = await fetch(
+    `https://app.snipcart.com/api/products/${encodeURIComponent(productId)}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Basic ${auth}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        inventoryManagementMethod: "Single",
+        stock,
+        allowOutOfStockPurchases: false,
+      }),
+    }
+  );
+
+  const text = await response.text();
+  const data = text ? JSON.parse(text) : null;
+
+  if (!response.ok) {
+    throw new Error(data?.message || `Snipcart inventory sync failed with status ${response.status}`);
+  }
+
+  return data;
+}
+
 function decodeBase64(content) {
   return Buffer.from(content, "base64").toString("utf8");
 }
@@ -67,6 +103,7 @@ function updateProductInventory(productsData, purchasedItems) {
   });
 
   let changed = false;
+  const changedProducts = [];
 
   const updatedProducts = products.map((product) => {
     const quantityPurchased = purchasedMap.get(normalizeProductId(product.id));
@@ -75,31 +112,56 @@ function updateProductInventory(productsData, purchasedItems) {
 
     const currentStock = Number(product.stock || 0);
     const newStock = Math.max(currentStock - quantityPurchased, 0);
-
-    changed = true;
-
-    return {
+    const updatedProduct = {
       ...product,
       stock: newStock,
       ...(newStock <= 0 ? { status: "sold" } : {}),
     };
+
+    changed = true;
+    changedProducts.push(updatedProduct);
+
+    return updatedProduct;
   });
 
   if (!changed) {
-    return { changed: false, productsData };
+    return { changed: false, productsData, changedProducts };
   }
 
   if (Array.isArray(productsData)) {
-    return { changed: true, productsData: updatedProducts };
+    return { changed: true, productsData: updatedProducts, changedProducts };
   }
 
   return {
     changed: true,
+    changedProducts,
     productsData: {
       ...productsData,
       products: updatedProducts,
     },
   };
+}
+
+async function syncChangedProductsToSnipcart(changedProducts) {
+  const results = [];
+
+  for (const product of changedProducts) {
+    const productId = product.id;
+    const stock = Number(product.stock || 0);
+
+    if (!productId) continue;
+
+    try {
+      const result = await snipcartInventoryRequest(productId, stock);
+      results.push({ productId, stock, success: true, result });
+      console.log(`Snipcart inventory synced for ${productId}. Stock: ${stock}`);
+    } catch (error) {
+      results.push({ productId, stock, success: false, error: error.message });
+      console.error(`Snipcart inventory sync failed for ${productId}:`, error.message);
+    }
+  }
+
+  return results;
 }
 
 exports.handler = async (event) => {
@@ -154,11 +216,17 @@ exports.handler = async (event) => {
       }),
     });
 
+    const snipcartSyncResults = await syncChangedProductsToSnipcart(updateResult.changedProducts);
+
     console.log("Inventory updated successfully.");
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, message: "Inventory updated." }),
+      body: JSON.stringify({
+        success: true,
+        message: "Inventory updated.",
+        snipcartSyncResults,
+      }),
     };
   } catch (error) {
     console.error("Webhook error:", error);
