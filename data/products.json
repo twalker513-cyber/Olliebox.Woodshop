@@ -339,9 +339,9 @@
       "price": "$1",
       "name": "testing tester",
       "wood": "wood",
-      "status": "available",
+      "status": "sold",
       "finish": "oil",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2436.jpeg"
       ],
