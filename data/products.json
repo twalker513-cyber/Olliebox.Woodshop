@@ -339,9 +339,9 @@
       "price": "$5",
       "name": "Test Product ",
       "wood": "wood",
-      "status": "sold",
+      "status": "available",
       "finish": "wax",
-      "stock": 0,
+      "stock": -1,
       "images": [
         "/assets/uploads/img_2417.jpeg"
       ],
