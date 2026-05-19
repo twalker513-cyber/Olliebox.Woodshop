@@ -335,17 +335,17 @@
       "category": "bottle-openers"
     },
     {
-      "size": "small",
+      "size": "small ",
       "price": "$1",
-      "name": "tester",
+      "name": "Testing 2 ",
       "wood": "wood",
-      "status": "sold",
+      "status": "available",
       "finish": "wax",
-      "stock": 0,
+      "stock": 1,
       "weight": 1,
-      "id": "tester",
-      "description": "tester",
-      "category": "bottle-openers"
+      "id": "testing-2",
+      "description": "test",
+      "category": "memory-boxes"
     }
   ]
 }
