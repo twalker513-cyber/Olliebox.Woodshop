@@ -264,9 +264,9 @@
       "price": "$95",
       "name": "Walnut 2 ",
       "wood": "Walnut",
-      "status": "sold",
+      "status": "available",
       "finish": "Oil and Wax ",
-      "stock": 0,
+      "stock": 1,
       "images": [
         "/assets/uploads/img_2410.jpeg",
         "/assets/uploads/img_2411.jpeg",
@@ -332,6 +332,22 @@
       "weight": 97,
       "id": "exotic-bottle-opener",
       "description": "Built from a mix of maple, walnut, cherry, bloodwood, and purple heart, this bottle opener brings serious character to the party. The layered hardwood design gives every piece its own vibe, making it the perfect grab for cracking open cold drinks, kicking back, and keeping the good times rolling.",
+      "category": "bottle-openers"
+    },
+    {
+      "size": "small ",
+      "price": "$5",
+      "name": "Test Product ",
+      "wood": "wood",
+      "status": "available",
+      "finish": "wax",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2417.jpeg"
+      ],
+      "weight": 48,
+      "id": "test-product",
+      "description": "test test test ",
       "category": "bottle-openers"
     }
   ]
