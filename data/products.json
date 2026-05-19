@@ -335,16 +335,19 @@
       "category": "bottle-openers"
     },
     {
-      "size": "small ",
+      "size": "small",
       "price": "$1",
-      "name": "Testing 2 ",
+      "name": "testing tester",
       "wood": "wood",
-      "status": "sold",
-      "finish": "wax",
-      "stock": 0,
-      "weight": 1,
-      "id": "testing-2",
-      "description": "test",
+      "status": "available",
+      "finish": "oil",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2436.jpeg"
+      ],
+      "weight": 0,
+      "id": "testing-tester",
+      "description": "testing tester ",
       "category": "bottle-openers"
     }
   ]
