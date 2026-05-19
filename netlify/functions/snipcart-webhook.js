@@ -233,6 +233,44 @@ async function syncChangedProductsToSnipcart(changedProducts) {
       results.push({ productId, stock, success: true, result });
       console.log(`Snipcart inventory synced for ${productId}. Stock: ${stock}`);
     } catch (error) {
+      const shouldRetryUppercase =
+        String(error.message || "").includes("status 404") &&
+        productId &&
+        productId !== productId.toUpperCase();
+
+      if (shouldRetryUppercase) {
+        const uppercaseProductId = productId.toUpperCase();
+        console.log(`Snipcart product ${productId} was not found. Retrying with ${uppercaseProductId}.`);
+
+        try {
+          const retryResult = await snipcartInventoryRequest(uppercaseProductId, stock);
+          results.push({
+            productId: uppercaseProductId,
+            originalProductId: productId,
+            stock,
+            success: true,
+            retriedWithUppercase: true,
+            result: retryResult,
+          });
+          console.log(`Snipcart inventory synced for ${uppercaseProductId}. Stock: ${stock}`);
+          continue;
+        } catch (retryError) {
+          results.push({
+            productId,
+            uppercaseProductId,
+            stock,
+            success: false,
+            retriedWithUppercase: true,
+            error: retryError.message,
+          });
+          console.error(
+            `Snipcart inventory sync failed for ${productId} and ${uppercaseProductId}:`,
+            retryError.message
+          );
+          continue;
+        }
+      }
+
       results.push({ productId, stock, success: false, error: error.message });
       console.error(`Snipcart inventory sync failed for ${productId}:`, error.message);
     }
@@ -294,11 +332,21 @@ exports.handler = async (event) => {
     });
 
     const snipcartSyncResults = await syncChangedProductsToSnipcart(updateResult.changedProducts);
-    const merchantEmailResult = await sendMerchantOrderEmail(
-      payload,
-      updateResult.changedProducts,
-      snipcartSyncResults
-    );
+    let merchantEmailResult;
+
+    try {
+      merchantEmailResult = await sendMerchantOrderEmail(
+        payload,
+        updateResult.changedProducts,
+        snipcartSyncResults
+      );
+    } catch (emailError) {
+      merchantEmailResult = {
+        success: false,
+        error: emailError.message,
+      };
+      console.error("Merchant order email failed, but inventory update completed:", emailError.message);
+    }
 
     console.log("Inventory updated successfully.");
 
