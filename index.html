@@ -9,6 +9,150 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-logo,
+    .footer img {
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      filter: none !important;
+    }
+
+    .brand img {
+      width: 42px;
+      height: auto;
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      filter: brightness(0) saturate(100%) invert(92%) sepia(13%) saturate(318%) hue-rotate(337deg) brightness(105%) contrast(92%) !important;
+    }
+
+    .hero-logo {
+      width: 300px;
+      max-width: 60vw;
+      height: auto !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      display: block;
+      margin: 0 auto 0.5rem;
+      padding-top: 0.25rem;
+      filter: brightness(0) saturate(100%) invert(92%) sepia(13%) saturate(318%) hue-rotate(337deg) brightness(105%) contrast(92%) !important;
+    }
+
+    .hero h1 {
+      font-size: clamp(4.25rem, 8vw, 6.5rem);
+      line-height: 0.92;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.04em;
+    }
+
+    .home-featured-section {
+      padding: 5rem 6vw;
+      background: #e8e1d5;
+      border-top: 1px solid rgba(29, 18, 13, 0.08);
+      border-bottom: 1px solid rgba(29, 18, 13, 0.08);
+    }
+
+    .home-featured-header {
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .home-featured-header h2 {
+      margin: 0.25rem 0 0.75rem;
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1;
+      color: #1d120d;
+    }
+
+    .home-featured-header p {
+      color: rgba(29, 18, 13, 0.75);
+    }
+
+    .home-featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .home-product-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(244, 235, 218, 0.14);
+      border-radius: 22px;
+      background: #2a1d16;
+      text-decoration: none;
+      color: #f4ebda;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 14px 36px rgba(29, 18, 13, 0.18);
+    }
+
+    .home-product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(244, 235, 218, 0.32);
+      background: #33231a;
+      box-shadow: 0 18px 44px rgba(29, 18, 13, 0.24);
+    }
+
+    .home-product-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .home-product-info {
+      padding: 1.25rem;
+    }
+
+    .home-product-info h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.15rem;
+      color: #f4ebda;
+    }
+
+    .home-product-info p {
+      margin: 0;
+      color: rgba(244, 235, 218, 0.72);
+      font-size: 0.95rem;
+    }
+
+    .home-product-price {
+      display: block;
+      margin-top: 0.8rem;
+      font-weight: 800;
+      color: #f4ebda;
+    }
+
+    .home-featured-actions {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .home-featured-actions .btn.secondary {
+      background: #1d120d;
+      border-color: #1d120d;
+      color: #f4ebda;
+    }
+
+    .home-featured-actions .btn.secondary:hover {
+      background: #2a1a13;
+      border-color: #2a1a13;
+      color: #f4ebda;
+    }
+
+    @media (max-width: 850px) {
+      .home-featured-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <script>
@@ -29,7 +173,7 @@ data-config-add-product-behavior="none"
 data-config-modal-style="side"></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
-      <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+      <img src="assets/logo-transparent.png" alt="Ollie Box Woodshop logo" />
       <span>Ollie Box Woodshop</span>
     </a>
 
@@ -50,7 +194,7 @@ data-config-modal-style="side"></div>
     <section class="hero">
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
-        <img class="hero-logo" src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+        <img class="hero-logo" src="assets/logo-transparent.png" alt="Ollie Box Woodshop logo" />
         <h1>Handcrafted.<br>One at a time.</h1>
         <p class="hero-copy">Every board is unique. There is only one of each. No two are the same. At Ollie Box Woodshop, there is no such thing as a shortcut.</p>
         <div class="hero-actions">
@@ -60,9 +204,20 @@ data-config-modal-style="side"></div>
       </div>
     </section>
 
-    <section class="motto-band reveal">
-      <p>Every piece is built with heart, integrity, and respect for the wood.</p>
+    <section class="home-featured-section reveal" aria-labelledby="featured-boards-title">
+      <div class="home-featured-header">
+        <p class="eyebrow">Shop preview</p>
+        <h2 id="featured-boards-title">Featured Boards</h2>
+        <p>A quick look at a few one-of-one pieces currently available in the shop.</p>
+      </div>
+
+      <div id="homeFeaturedProducts" class="home-featured-grid"></div>
+
+      <div class="home-featured-actions">
+        <a class="btn secondary" href="shop.html">Browse Full Collection</a>
+      </div>
     </section>
+
 
     <section id="story" class="section story-section">
       <div class="story-card reveal">
@@ -72,9 +227,10 @@ data-config-modal-style="side"></div>
         <p>We do not mass produce. We do not rush the process. Each board is shaped, sanded, finished, and inspected by hand so the final piece feels honest, useful, and truly one of a kind.</p>
       </div>
     </section>
+  </main>
 
   <footer id="contact" class="footer">
-    <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+    <img src="assets/logo-transparent.png" alt="Ollie Box Woodshop logo" />
     <h2>Ollie Box Woodshop</h2>
     <p>One-of-One Boards. Built With Heart.</p>
     <div class="footer-links">
@@ -85,6 +241,80 @@ data-config-modal-style="side"></div>
     <small>© <span id="year"></span> Ollie Box Woodshop. All rights reserved.</small>
   </footer>
 
+  <script>
+    async function loadHomeFeaturedProducts() {
+      const featuredContainer = document.getElementById("homeFeaturedProducts");
+      if (!featuredContainer) return;
+
+      try {
+        const productPaths = ["products.json", "./products.json", "data/products.json", "assets/products.json"];
+        let response = null;
+
+        for (const path of productPaths) {
+          response = await fetch(path, { cache: "no-store" });
+          if (response.ok) break;
+        }
+
+        if (!response || !response.ok) throw new Error("Could not load products file");
+
+        const products = await response.json();
+        const productList = Array.isArray(products)
+          ? products
+          : products.products || products.items || products.boards || [];
+
+        const availableProducts = productList.filter((product) => {
+          const stockValue = Number(product.stock ?? product.inventory ?? product.quantity ?? 1);
+          return stockValue > 0 && product.soldOut !== true;
+        });
+
+        const featuredProducts = availableProducts
+          .filter((product) => product.featured === true || product.featured === "true")
+          .slice(0, 3);
+
+        const productsToShow = featuredProducts.length > 0
+          ? featuredProducts
+          : availableProducts.slice(0, 3);
+
+        if (productsToShow.length === 0) {
+          featuredContainer.innerHTML = "<p>No boards are currently available. Check back soon.</p>";
+          return;
+        }
+
+        featuredContainer.innerHTML = productsToShow.map((product) => {
+          const productName = product.name || product.title || "One-of-One Board";
+          const rawPrice = product.price ?? product.priceAmount ?? product.amount ?? product.cost ?? "";
+          const numericPrice = typeof rawPrice === "number"
+            ? rawPrice
+            : Number(String(rawPrice).replace(/[^0-9.]/g, ""));
+          const productPrice = Number.isFinite(numericPrice) && numericPrice > 0
+            ? `$${numericPrice.toLocaleString()}`
+            : "View details";
+          const productImage = product.image || product.imageUrl || product.mainImage || product.photo || product.thumbnail || (Array.isArray(product.images) ? product.images[0] : "");
+          const rawCategory = product.category || product.woodType || "Handcrafted board";
+          const productCategory = String(rawCategory)
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (letter) => letter.toUpperCase());
+          const productId = product.id || product.slug || productName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+          return `
+            <a class="home-product-card" href="shop.html#${productId}">
+              ${productImage ? `<img src="${productImage}" alt="${productName}">` : ""}
+              <div class="home-product-info">
+                <h3>${productName}</h3>
+                <p>${productCategory}</p>
+                <span class="home-product-price">${productPrice}</span>
+              </div>
+            </a>
+          `;
+        }).join("");
+      } catch (error) {
+        console.error("Featured boards failed to load:", error);
+        featuredContainer.innerHTML = "<p>Featured boards are loading soon.</p>";
+      }
+    }
+
+    loadHomeFeaturedProducts();
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

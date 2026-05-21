@@ -401,7 +401,7 @@ window.SnipcartSettings = {
 <div hidden id="snipcart" data-api-key="ODY3MTI3MjAtZTcwNS00YzgxLTk0M2YtZDcwNWU2NmUyYzNkNjM5MTM4NjkxNjg4MDY2MTky" data-config-add-product-behavior="none" data-config-modal-style="side" data-config-product-definition="false"></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ollie Box Woodshop Home">
-      <img src="assets/logo.jpeg" alt="Ollie Box Woodshop logo" />
+      <img src="assets/logo-transparent.png" alt="Ollie Box Woodshop logo" />
       <span>Ollie Box Woodshop</span>
     </a>
 
@@ -568,6 +568,20 @@ window.SnipcartSettings = {
       return 1;
     }
 
+    function getProductId(product) {
+      return String(
+        product.id ||
+        product.slug ||
+        product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+      ).trim().toLowerCase();
+    }
+
+    function getProductWeight(product) {
+      const rawWeight = product.weightGrams || product.weight || product.grams || "";
+      const numericWeight = Number(String(rawWeight).replace(/[^0-9.]/g, ""));
+      return Number.isFinite(numericWeight) && numericWeight > 0 ? numericWeight : "";
+    }
+
     function isProductSoldOut(product) {
       return product.status === "sold" || getProductStock(product) <= 0;
     }
@@ -602,7 +616,9 @@ window.SnipcartSettings = {
       const buttonText = isSold ? "Sold Out" : isComingSoon ? "Coming Soon" : "View Details";
       const buttonClass = isSold || isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
       const encodedImages = encodeURIComponent(JSON.stringify(images));
-      const productId = product.id || product.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const productId = getProductId(product);
+      const productWeight = getProductWeight(product);
+      const weightAttribute = productWeight ? `data-item-weight="${productWeight}"` : "";
       const productUrl = `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${productId}`;
 
       return `
@@ -614,7 +630,7 @@ window.SnipcartSettings = {
             <p class="price">${product.price}</p>
             <p>${product.description}</p>
             <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
-            <button class="${buttonClass}" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stock="${productStock}" data-images="${encodedImages}" ${isSold || isComingSoon ? "disabled" : ""}>${buttonText}</button>
+            <button class="${buttonClass}" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stock="${productStock}" data-images="${encodedImages}" data-weight="${productWeight}" ${isSold || isComingSoon ? "disabled" : ""}>${buttonText}</button>
         
             ${!isSold && !isComingSoon ? `
  <button
@@ -626,6 +642,7 @@ window.SnipcartSettings = {
   data-item-description="${product.description}"
   data-item-url="${productUrl}"
   data-item-inventory="${productStock}"
+  ${weightAttribute}
 >
   Add to Cart
 </button>
@@ -758,6 +775,11 @@ window.SnipcartSettings = {
             modalBuy.setAttribute("data-item-description", button.dataset.description);
             modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${button.dataset.id}`);
             modalBuy.setAttribute("data-item-inventory", button.dataset.stock || "1");
+            if (button.dataset.weight) {
+              modalBuy.setAttribute("data-item-weight", button.dataset.weight);
+            } else {
+              modalBuy.removeAttribute("data-item-weight");
+            }
           }
 
           const modalImage = document.getElementById("modalImage");
