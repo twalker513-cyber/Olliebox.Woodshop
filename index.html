@@ -101,10 +101,20 @@
 
     .home-product-card img {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      height: 280px;
+      object-fit: contain;
+      object-position: center;
       display: block;
-      background: rgba(255, 255, 255, 0.06);
+      background: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
+      transform: none;
+    }
+
+    @media (max-width: 850px) {
+      .home-product-card img {
+        height: 260px;
+      }
     }
 
     .home-product-info {
@@ -289,7 +299,9 @@ data-config-modal-style="side"></div>
           const productPrice = Number.isFinite(numericPrice) && numericPrice > 0
             ? `$${numericPrice.toLocaleString()}`
             : "View details";
-          const productImage = product.image || product.imageUrl || product.mainImage || product.photo || product.thumbnail || (Array.isArray(product.images) ? product.images[0] : "");
+          const productImage = Array.isArray(product.images) && product.images.length > 0
+            ? product.images[0]
+            : product.image || product.imageUrl || product.mainImage || product.photo || product.thumbnail || "";
           const rawCategory = product.category || product.woodType || "Handcrafted board";
           const productCategory = String(rawCategory)
             .replace(/-/g, " ")

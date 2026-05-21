@@ -25,6 +25,7 @@ collections:
               - { label: "Price", name: "price", widget: "string" }
               - { label: "Shipping Weight (grams)", name: "weight", widget: "number", value_type: "int", required: false, hint: "Use FINAL packed shipping weight in grams. Example: 8200 = about 18 lb packed." }
               - { label: "Quantity In Stock", name: "stock", widget: "number", value_type: "int", default: 1, required: false, hint: "Set how many of this product are available for purchase." }
+              - { label: "Feature on Homepage", name: "featured", widget: "boolean", default: false, required: false, hint: "Check this box to show this product in the Featured Boards section on the homepage." }
               - { label: "Wood", name: "wood", widget: "string", required: false }
               - { label: "Size", name: "size", widget: "string", required: false }
               - { label: "Finish", name: "finish", widget: "string", required: false }
