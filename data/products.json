@@ -216,9 +216,9 @@
       "price": "$100",
       "name": "Zebra's and Cigar's",
       "wood": "Zebra Wood ",
-      "status": "available",
+      "status": "sold",
       "finish": "Oil and Wax ",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2310.jpeg",
         "/assets/uploads/img_2312.jpeg",
