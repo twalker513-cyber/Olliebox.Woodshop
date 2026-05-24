@@ -579,16 +579,18 @@ window.SnipcartSettings = {
     function getProductWeight(product) {
       const rawWeight = product.weightGrams || product.weight || product.grams || "";
       const numericWeight = Number(String(rawWeight).replace(/[^0-9.]/g, ""));
-      return Number.isFinite(numericWeight) && numericWeight > 0 ? numericWeight : "";
+      return Number.isFinite(numericWeight) && numericWeight > 0 ? numericWeight : 0;
     }
 
     function isProductSoldOut(product) {
-      return product.status === "sold" || getProductStock(product) <= 0;
+      const status = String(product.status || "").trim().toLowerCase();
+      return status === "sold" || getProductStock(product) <= 0;
     }
 
     function getBadgeText(product) {
+      const status = String(product.status || "").trim().toLowerCase();
       if (isProductSoldOut(product)) return "Sold Out";
-      if (product.status === "coming-soon") return "Coming Soon";
+      if (status === "coming-soon") return "Coming Soon";
       return "Only One Available";
     }
 
@@ -607,7 +609,8 @@ window.SnipcartSettings = {
       const firstImage = images.length > 0 ? images[0] : "";
       const productStock = getProductStock(product);
       const isSold = isProductSoldOut(product);
-      const isComingSoon = product.status === "coming-soon";
+      const status = String(product.status || "").trim().toLowerCase();
+      const isComingSoon = status === "coming-soon";
       const galleryControls = images.length > 1 ? `
         <button class="card-gallery-btn card-gallery-prev" type="button" aria-label="Previous image" data-gallery-direction="prev">‹</button>
         <button class="card-gallery-btn card-gallery-next" type="button" aria-label="Next image" data-gallery-direction="next">›</button>
@@ -618,7 +621,7 @@ window.SnipcartSettings = {
       const encodedImages = encodeURIComponent(JSON.stringify(images));
       const productId = getProductId(product);
       const productWeight = getProductWeight(product);
-      const weightAttribute = productWeight ? `data-item-weight="${productWeight}"` : "";
+      const weightAttribute = `data-item-weight="${productWeight}"`;
       const productUrl = `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${productId}`;
 
       return `
@@ -775,11 +778,7 @@ window.SnipcartSettings = {
             modalBuy.setAttribute("data-item-description", button.dataset.description);
             modalBuy.setAttribute("data-item-url", `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${button.dataset.id}`);
             modalBuy.setAttribute("data-item-inventory", button.dataset.stock || "1");
-            if (button.dataset.weight) {
-              modalBuy.setAttribute("data-item-weight", button.dataset.weight);
-            } else {
-              modalBuy.removeAttribute("data-item-weight");
-            }
+            modalBuy.setAttribute("data-item-weight", button.dataset.weight || "0");
           }
 
           const modalImage = document.getElementById("modalImage");

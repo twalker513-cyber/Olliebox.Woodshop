@@ -31,7 +31,6 @@ collections:
               - { label: "Finish", name: "finish", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Status", name: "status", widget: "select", options: ["available", "sold", "coming-soon"], default: "available" }
-              - { label: "Stripe Link", name: "stripeLink", widget: "string", required: false }
               - label: "Product Photos"
                 name: "images"
                 widget: "list"

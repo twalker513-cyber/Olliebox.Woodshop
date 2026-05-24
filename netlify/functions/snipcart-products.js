@@ -13,7 +13,7 @@ function getProductId(product) {
 function getProductWeight(product) {
   const rawWeight = product.weightGrams || product.weight || product.grams || "";
   const numericWeight = Number(String(rawWeight).replace(/[^0-9.]/g, ""));
-  return Number.isFinite(numericWeight) && numericWeight > 0 ? numericWeight : undefined;
+  return Number.isFinite(numericWeight) && numericWeight > 0 ? numericWeight : 0;
 }
 
 function getPriceNumber(price) {
@@ -32,7 +32,7 @@ function buildSnipcartProduct(product) {
     price: getPriceNumber(product.price),
     url: validationUrl,
     description: product.description || "",
-    ...(weight ? { weight } : {}),
+    weight,
     customFields: []
   };
 }
@@ -51,10 +51,11 @@ exports.handler = async function (event) {
 
     const availableProducts = products.filter((product) => {
       const stock = Number(product.stock || 0);
+      const status = String(product.status || "").trim().toLowerCase();
 
       return (
-        product.status !== "sold" &&
-        product.status !== "coming-soon" &&
+        status !== "sold" &&
+        status !== "coming-soon" &&
         stock > 0
       );
     });
