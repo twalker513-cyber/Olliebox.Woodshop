@@ -28,8 +28,10 @@ function buildSnipcartProduct(product) {
 
   return {
     id,
+    name: product.name || id,
     price: getPriceNumber(product.price),
     url: validationUrl,
+    description: product.description || "",
     ...(weight ? { weight } : {}),
     customFields: []
   };
@@ -94,7 +96,8 @@ exports.handler = async function (event) {
     return {
       statusCode: 500,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify({
         error: "Unable to load Snipcart products.",
