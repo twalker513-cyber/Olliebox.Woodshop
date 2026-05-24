@@ -16,6 +16,11 @@ function getProductWeight(product) {
   return Number.isFinite(numericWeight) && numericWeight > 0 ? numericWeight : 0;
 }
 
+function getProductDimension(value) {
+  const numericDimension = Number(String(value || "").replace(/[^0-9.]/g, ""));
+  return Number.isFinite(numericDimension) && numericDimension > 0 ? numericDimension : 0;
+}
+
 function getPriceNumber(price) {
   const cleanedPrice = String(price || "0").replace(/[^0-9.]/g, "");
   return Number(cleanedPrice || 0);
@@ -25,6 +30,9 @@ function buildSnipcartProduct(product) {
   const id = getProductId(product);
   const validationUrl = `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${id}`;
   const weight = getProductWeight(product);
+  const height = getProductDimension(product.height);
+  const length = getProductDimension(product.length);
+  const width = getProductDimension(product.width);
 
   return {
     id,
@@ -33,6 +41,12 @@ function buildSnipcartProduct(product) {
     url: validationUrl,
     description: product.description || "",
     weight,
+    dimensions: {
+      weight,
+      height,
+      length,
+      width
+    },
     customFields: []
   };
 }
