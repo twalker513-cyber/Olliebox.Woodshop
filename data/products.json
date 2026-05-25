@@ -102,9 +102,9 @@
       "name": "Bob and Weave ",
       "wood": "Maple and Walnut ",
       "featured": true,
-      "status": "available",
+      "status": "sold",
       "finish": "Oil and Wax ",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2283.jpeg",
         "/assets/uploads/img_2284.jpeg",
@@ -272,9 +272,9 @@
       "price": "$95",
       "name": "Cherry Charcuterie ",
       "wood": "Cherry ",
-      "status": "available",
+      "status": "sold",
       "finish": "Oil and Wax ",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2402.jpeg",
         "/assets/uploads/img_2403.jpeg",
