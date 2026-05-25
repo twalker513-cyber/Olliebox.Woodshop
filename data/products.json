@@ -384,9 +384,9 @@
       "price": "$40",
       "name": "Exotic Bottle Opener ",
       "wood": "Maple, Walnut, Cherry, Bloodwood, and Purple Heart",
-      "status": "available",
+      "status": "sold",
       "finish": "Oil",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2426.jpeg",
         "/assets/uploads/img_2427.jpeg"
