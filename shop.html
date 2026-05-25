@@ -898,5 +898,25 @@ window.SnipcartSettings = {
         });
       });
   </script>
+
+  <script>
+    document.addEventListener("snipcart.ready", () => {
+      Snipcart.events.on("order.completed", (order) => {
+        if (typeof gtag !== "function") return;
+
+        gtag("event", "purchase", {
+          transaction_id: order.invoiceNumber || order.token || "snipcart-order",
+          value: order.total || 0,
+          currency: order.currency || "USD",
+          items: (order.items || []).map((item) => ({
+            item_id: item.id,
+            item_name: item.name,
+            price: item.price,
+            quantity: item.quantity
+          }))
+        });
+      });
+    });
+  </script>
 </body>
 </html>
