@@ -178,9 +178,9 @@
       "price": "$60",
       "name": "Slippery Walnut ",
       "wood": "Walnut body and Maple lid ",
-      "status": "sold",
+      "status": "available",
       "finish": "Universal Oil Finish ",
-      "stock": 0,
+      "stock": 1,
       "images": [
         "/assets/uploads/img_2307.jpeg",
         "/assets/uploads/img_2306.jpeg",
@@ -384,9 +384,9 @@
       "price": "$40",
       "name": "Exotic Bottle Opener ",
       "wood": "Maple, Walnut, Cherry, Bloodwood, and Purple Heart",
-      "status": "sold",
+      "status": "available",
       "finish": "Oil",
-      "stock": 0,
+      "stock": 1,
       "images": [
         "/assets/uploads/img_2426.jpeg",
         "/assets/uploads/img_2427.jpeg"
