@@ -101,7 +101,7 @@
       "price": "$320",
       "name": "Bob and Weave ",
       "wood": "Maple and Walnut ",
-      "featured": true,
+      "featured": false,
       "status": "sold",
       "finish": "Oil and Wax ",
       "stock": 0,
