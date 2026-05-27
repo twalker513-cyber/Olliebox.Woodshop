@@ -82,6 +82,7 @@
       "price": "$150",
       "name": "Abstract Thoughts ",
       "wood": "Oak, Walnut, Cherry, Purple Heart, Bloodwood, and Mahogany ",
+      "featured": true,
       "status": "available",
       "finish": "Oil and Wax ",
       "stock": 1,
