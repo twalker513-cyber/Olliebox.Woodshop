@@ -101,7 +101,7 @@
       "price": "$320",
       "name": "Bob and Weave ",
       "wood": "Maple and Walnut ",
-      "featured": true,
+      "featured": false,
       "status": "sold",
       "finish": "Oil and Wax ",
       "stock": 0,
@@ -114,6 +114,25 @@
       "weight": 3694,
       "id": "bob-and-weave",
       "description": "Bob and Weave combines bold geometry with classic craftsmanship. The woven end grain pattern gives this cutting board a striking look while providing a durable surface built for everyday use. Complete with a built in juice groove, it’s designed to perform beautifully while standing out on your countertop.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "21 3/4\" x 12 1/2\" x 1 1/4\"",
+      "price": "$320",
+      "name": "The Mega Shocka ",
+      "wood": "Walnut and Maple Inlay ",
+      "status": "sold",
+      "finish": "Oil and Wax ",
+      "stock": 0,
+      "images": [
+        "/assets/uploads/img_2387.jpeg",
+        "/assets/uploads/img_2388.jpeg",
+        "/assets/uploads/img_2391.jpeg",
+        "/assets/uploads/img_2392.jpeg"
+      ],
+      "weight": 3308,
+      "id": "the-mega-shocka",
+      "description": "The Mega Shocka! This board is all good vibes with a bold maple skeleton shaka inlay set into rich walnut. Clean contrast, smooth lines, and just the right amount of attitude make it a killer centerpiece whether you’re throwing food on it after a long day or just letting it steal the show.",
       "category": "cutting-boards"
     },
     {
@@ -272,6 +291,7 @@
       "price": "$95",
       "name": "Cherry Charcuterie ",
       "wood": "Cherry ",
+      "featured": true,
       "status": "sold",
       "finish": "Oil and Wax ",
       "stock": 0,
@@ -285,25 +305,6 @@
       "id": "cherry-charcuterie",
       "description": "Made from rich cherry wood, this charcuterie board brings a warm tone and timeless simplicity to any gathering. Its clean profile and natural grain make it perfect for serving cheeses, meats, and appetizers with an elegant presentation.",
       "category": "charcuterie-boards"
-    },
-    {
-      "size": "21 3/4\" x 12 1/2\" x 1 1/4\"",
-      "price": "$320",
-      "name": "The Mega Shocka ",
-      "wood": "Walnut and Maple Inlay ",
-      "status": "available",
-      "finish": "Oil and Wax ",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2387.jpeg",
-        "/assets/uploads/img_2388.jpeg",
-        "/assets/uploads/img_2391.jpeg",
-        "/assets/uploads/img_2392.jpeg"
-      ],
-      "weight": 3308,
-      "id": "the-mega-shocka",
-      "description": "The Mega Shocka! This board is all good vibes with a bold maple skeleton shaka inlay set into rich walnut. Clean contrast, smooth lines, and just the right amount of attitude make it a killer centerpiece whether you’re throwing food on it after a long day or just letting it steal the show.",
-      "category": "cutting-boards"
     },
     {
       "size": "20 1/4\" (with handle) x 7\" x 3/4\"",
