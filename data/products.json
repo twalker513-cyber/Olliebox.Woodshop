@@ -121,9 +121,9 @@
       "price": "$320",
       "name": "The Mega Shocka ",
       "wood": "Walnut and Maple Inlay ",
-      "status": "available",
+      "status": "sold",
       "finish": "Oil and Wax ",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2387.jpeg",
         "/assets/uploads/img_2388.jpeg",
