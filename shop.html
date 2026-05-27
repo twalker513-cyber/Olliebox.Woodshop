@@ -585,6 +585,15 @@ window.SnipcartSettings = {
       ).trim().toLowerCase();
     }
 
+    function escapeAttribute(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
     function getProductWeight(product) {
       const rawWeight = product.weightGrams || product.weight || product.grams || "";
       const numericWeight = Number(String(rawWeight).replace(/[^0-9.]/g, ""));
@@ -624,34 +633,40 @@ window.SnipcartSettings = {
         <button class="card-gallery-btn card-gallery-prev" type="button" aria-label="Previous image" data-gallery-direction="prev">‹</button>
         <button class="card-gallery-btn card-gallery-next" type="button" aria-label="Next image" data-gallery-direction="next">›</button>
       ` : "";
-      const imageContent = firstImage ? `<img src="${firstImage}" alt="${product.name}" data-card-image>${galleryControls}` : "<span>Photo Coming Soon</span>";
-      const buttonText = isSold ? "Sold Out" : isComingSoon ? "Coming Soon" : "View Details";
-      const buttonClass = isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
-      const encodedImages = encodeURIComponent(JSON.stringify(images));
       const productId = getProductId(product);
       const productWeight = getProductWeight(product);
+      const productName = escapeAttribute(product.name);
+      const productDescription = escapeAttribute(product.description);
+      const productWood = escapeAttribute(product.wood || "TBD");
+      const productSize = escapeAttribute(product.size || "TBD");
+      const productFinish = escapeAttribute(product.finish || "TBD");
+      const productPrice = escapeAttribute(product.price);
       const weightAttribute = `data-item-weight="${productWeight}"`;
       const productUrl = `https://ollieboxwoodshop.com/.netlify/functions/snipcart-products?id=${productId}`;
+      const encodedImages = encodeURIComponent(JSON.stringify(images));
+      const buttonText = isSold ? "Sold Out" : isComingSoon ? "Coming Soon" : "View Details";
+      const buttonClass = isComingSoon ? "btn small disabled-btn" : "btn small product-details-button";
+      const imageContent = firstImage ? `<img src="${escapeAttribute(firstImage)}" alt="${productName}" data-card-image>${galleryControls}` : "<span>Photo Coming Soon</span>";
 
       return `
         <article class="product-card ${isSold ? "sold" : ""} ${!isComingSoon ? "clickable-card" : ""}" data-card-images="${encodedImages}" data-card-image-index="0">
           <div class="${getImageClass(product)}">${imageContent}</div>
           <div class="product-info">
             <span class="badge ${isSold ? "sold-badge" : ""}">${getBadgeText(product)}</span>
-            <h3>${product.name}</h3>
-            <p class="price">${product.price}</p>
-            <p>${product.description}</p>
-            <p class="product-details"><strong>Wood:</strong> ${product.wood || "TBD"} · <strong>Size:</strong> ${product.size || "TBD"}</p>
-            <button class="${buttonClass}" data-id="${productId}" data-name="${product.name}" data-price="${product.price}" data-description="${product.description}" data-wood="${product.wood || "TBD"}" data-size="${product.size || "TBD"}" data-finish="${product.finish || "TBD"}" data-stock="${productStock}" data-images="${encodedImages}" data-weight="${productWeight}" ${isComingSoon ? "disabled" : ""}>${buttonText}</button>
+            <h3>${productName}</h3>
+            <p class="price">${productPrice}</p>
+            <p>${productDescription}</p>
+            <p class="product-details"><strong>Wood:</strong> ${productWood} · <strong>Size:</strong> ${productSize}</p>
+            <button class="${buttonClass}" data-id="${productId}" data-name="${productName}" data-price="${productPrice}" data-description="${productDescription}" data-wood="${productWood}" data-size="${productSize}" data-finish="${productFinish}" data-stock="${productStock}" data-images="${encodedImages}" data-weight="${productWeight}" ${isComingSoon ? "disabled" : ""}>${buttonText}</button>
         
             ${!isSold && !isComingSoon ? `
  <button
   onclick="showAddCartFeedback(this);"
   class="btn small add-cart-btn snipcart-add-item"
   data-item-id="${productId}"
-  data-item-name="${product.name}"
-  data-item-price="${product.price.replace(/[^0-9.]/g, "")}"
-  data-item-description="${product.description}"
+  data-item-name="${productName}"
+  data-item-price="${String(product.price).replace(/[^0-9.]/g, "")}"
+  data-item-description="${productDescription}"
   data-item-url="${productUrl}"
   data-item-inventory="${productStock}"
   ${weightAttribute}

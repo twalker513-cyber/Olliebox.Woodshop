@@ -355,7 +355,7 @@ data-config-modal-style="side"></div>
       if (!featuredContainer) return;
 
       try {
-        const productPaths = ["products.json", "./products.json", "data/products.json", "assets/products.json"];
+        const productPaths = ["data/products.json", "./data/products.json"];
         let response = null;
 
         for (const path of productPaths) {
@@ -376,7 +376,7 @@ data-config-modal-style="side"></div>
         });
 
         const featuredProducts = availableProducts
-          .filter((product) => product.featured === true || product.featured === "true")
+          .filter((product) => product.featured === true || String(product.featured).toLowerCase() === "true")
           .slice(0, 3);
 
         const productsToShow = featuredProducts.length > 0
@@ -389,7 +389,14 @@ data-config-modal-style="side"></div>
         }
 
         featuredContainer.innerHTML = productsToShow.map((product) => {
+          const escapeHtml = (value) => String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
           const productName = product.name || product.title || "One-of-One Board";
+          const safeProductName = escapeHtml(productName);
           const rawPrice = product.price ?? product.priceAmount ?? product.amount ?? product.cost ?? "";
           const numericPrice = typeof rawPrice === "number"
             ? rawPrice
@@ -407,12 +414,12 @@ data-config-modal-style="side"></div>
           const productId = product.id || product.slug || productName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
           return `
-            <a class="home-product-card" href="shop.html#${productId}">
-              ${productImage ? `<img src="${productImage}" alt="${productName}">` : ""}
+            <a class="home-product-card" href="shop.html#${escapeHtml(productId)}">
+              ${productImage ? `<img src="${escapeHtml(productImage)}" alt="${safeProductName}">` : ""}
               <div class="home-product-info">
-                <h3>${productName}</h3>
-                <p>${productCategory}</p>
-                <span class="home-product-price">${productPrice}</span>
+                <h3>${safeProductName}</h3>
+                <p>${escapeHtml(productCategory)}</p>
+                <span class="home-product-price">${escapeHtml(productPrice)}</span>
               </div>
             </a>
           `;
