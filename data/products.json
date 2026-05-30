@@ -98,45 +98,6 @@
       "category": "rolling-trays"
     },
     {
-      "size": "17\" x 12 1/2\" x 1 3/4\"",
-      "price": "$320",
-      "name": "Bob and Weave ",
-      "wood": "Maple and Walnut ",
-      "featured": false,
-      "status": "sold",
-      "finish": "Oil and Wax ",
-      "stock": 0,
-      "images": [
-        "/assets/uploads/img_2283.jpeg",
-        "/assets/uploads/img_2284.jpeg",
-        "/assets/uploads/img_2285.jpeg",
-        "/assets/uploads/img_2286.jpeg"
-      ],
-      "weight": 3694,
-      "id": "bob-and-weave",
-      "description": "Bob and Weave combines bold geometry with classic craftsmanship. The woven end grain pattern gives this cutting board a striking look while providing a durable surface built for everyday use. Complete with a built in juice groove, it’s designed to perform beautifully while standing out on your countertop.",
-      "category": "cutting-boards"
-    },
-    {
-      "size": "21 3/4\" x 12 1/2\" x 1 1/4\"",
-      "price": "$320",
-      "name": "The Mega Shocka ",
-      "wood": "Walnut and Maple Inlay ",
-      "status": "sold",
-      "finish": "Oil and Wax ",
-      "stock": 0,
-      "images": [
-        "/assets/uploads/img_2387.jpeg",
-        "/assets/uploads/img_2388.jpeg",
-        "/assets/uploads/img_2391.jpeg",
-        "/assets/uploads/img_2392.jpeg"
-      ],
-      "weight": 3308,
-      "id": "the-mega-shocka",
-      "description": "The Mega Shocka! This board is all good vibes with a bold maple skeleton shaka inlay set into rich walnut. Clean contrast, smooth lines, and just the right amount of attitude make it a killer centerpiece whether you’re throwing food on it after a long day or just letting it steal the show.",
-      "category": "cutting-boards"
-    },
-    {
       "size": "17\" x 12\" x 1 1/2\"",
       "price": "$230",
       "name": "Froggy Fresh ",
@@ -145,9 +106,9 @@
       "finish": "Oil and Wax",
       "stock": 1,
       "images": [
+        "/assets/uploads/img_2385.jpeg",
         "/assets/uploads/img_2383.jpeg",
         "/assets/uploads/img_2384.jpeg",
-        "/assets/uploads/img_2385.jpeg",
         "/assets/uploads/img_2386.jpeg"
       ],
       "weight": 2910,
@@ -164,10 +125,10 @@
       "finish": "Mineral Oil and Wax ",
       "stock": 1,
       "images": [
+        "/assets/uploads/img_2280.jpeg",
         "/assets/uploads/img_2276.jpeg",
         "/assets/uploads/img_2277.jpeg",
-        "/assets/uploads/img_2278.jpeg",
-        "/assets/uploads/img_2280.jpeg"
+        "/assets/uploads/img_2278.jpeg"
       ],
       "weight": 3033,
       "id": "hollow-eye",
@@ -232,25 +193,6 @@
       "category": "charcuterie-boards"
     },
     {
-      "size": "8\" x 8\" x 1/2\"",
-      "price": "$100",
-      "name": "Zebra's and Cigar's",
-      "wood": "Zebra Wood ",
-      "status": "sold",
-      "finish": "Oil and Wax ",
-      "stock": 0,
-      "images": [
-        "/assets/uploads/img_2310.jpeg",
-        "/assets/uploads/img_2312.jpeg",
-        "/assets/uploads/img_2316.jpeg",
-        "/assets/uploads/img_2314.jpeg"
-      ],
-      "weight": 836,
-      "id": "zebras-and-cigars",
-      "description": "Crafted from bold zebrawood in an end grain pattern, Zebra & Cigars is a handcrafted cigar ashtray designed to stand out. The rich contrast and layered grain create a striking centerpiece, while the deep rests and solid construction make it perfect for slow evenings and good conversation.",
-      "category": "cigar-ash-trays"
-    },
-    {
       "size": "20 & 1/4\" (with handle) x 7\" x 3/4\"",
       "price": "$110",
       "name": "The Ambrosia ",
@@ -290,26 +232,6 @@
     {
       "size": "20 1/4\" (with handle) x 7\" x 3/4\"",
       "price": "$95",
-      "name": "Cherry Charcuterie ",
-      "wood": "Cherry ",
-      "featured": true,
-      "status": "sold",
-      "finish": "Oil and Wax ",
-      "stock": 0,
-      "images": [
-        "/assets/uploads/img_2402.jpeg",
-        "/assets/uploads/img_2403.jpeg",
-        "/assets/uploads/img_2400.jpeg",
-        "/assets/uploads/img_2401.jpeg"
-      ],
-      "weight": 787,
-      "id": "cherry-charcuterie",
-      "description": "Made from rich cherry wood, this charcuterie board brings a warm tone and timeless simplicity to any gathering. Its clean profile and natural grain make it perfect for serving cheeses, meats, and appetizers with an elegant presentation.",
-      "category": "charcuterie-boards"
-    },
-    {
-      "size": "20 1/4\" (with handle) x 7\" x 3/4\"",
-      "price": "$95",
       "name": "Walnut 1 ",
       "wood": "Walnut",
       "status": "available",
@@ -324,25 +246,6 @@
       "weight": 728,
       "id": "walnut-1",
       "description": "Cut from solid walnut, this charcuterie board showcases rich dark tones and natural grain variation that make each piece one of a kind. Its sleek profile and balanced shape create a refined serving board that feels equally at home on display or at the center of a gathering.",
-      "category": "charcuterie-boards"
-    },
-    {
-      "size": "20 1/4\" (with handle) x 7\" x 3/4\"",
-      "price": "$95",
-      "name": "Walnut 2 ",
-      "wood": "Walnut",
-      "status": "sold",
-      "finish": "Oil and Wax ",
-      "stock": 0,
-      "images": [
-        "/assets/uploads/img_2410.jpeg",
-        "/assets/uploads/img_2411.jpeg",
-        "/assets/uploads/img_2408.jpeg",
-        "/assets/uploads/img_2409.jpeg"
-      ],
-      "weight": 819,
-      "id": "walnut-2",
-      "description": "This walnut charcuterie board features deep espresso tones and bold grain patterns that give each piece its own character. Designed with a clean tapered profile and smooth finish, it’s a timeless serving board built for both everyday use and special gatherings.",
       "category": "charcuterie-boards"
     },
     {
@@ -397,6 +300,217 @@
       "id": "exotic-bottle-opener",
       "description": "Built from a mix of maple, walnut, cherry, bloodwood, and purple heart, this bottle opener brings serious character to the party. The layered hardwood design gives every piece its own vibe, making it the perfect grab for cracking open cold drinks, kicking back, and keeping the good times rolling.",
       "category": "bottle-openers"
+    },
+    {
+      "size": "15 3/4\" x 12\" x 1 1/4\"",
+      "price": "$90",
+      "name": "Walnut and Whiskey",
+      "wood": "Walnut, Cherry, Mahogany, Maple",
+      "featured": true,
+      "status": "available",
+      "finish": "Oil and Wax",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2498.jpeg",
+        "/assets/uploads/img_2499.jpeg",
+        "/assets/uploads/img_2497.jpeg"
+      ],
+      "weight": 2203,
+      "id": "walnut-and-whiskey",
+      "description": "Whiskey & Walnut combines deep walnut tones with warm cherry, mahogany, and maple accents in a striking striped design. Handcrafted from premium hardwoods and finished with food safe oil and wax, this one-of-one board highlights the beauty of natural wood through clean lines and rich contrast. Designed for everyday use and built to last for years to come, it offers the perfect balance of craftsmanship, durability, and timeless style.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "16\" x 12\" x 1 1/2\"",
+      "price": "$200",
+      "name": "Midnight Reserve",
+      "wood": "Walnut",
+      "featured": false,
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2505-2.jpeg",
+        "/assets/uploads/img_2500-2.jpeg",
+        "/assets/uploads/img_2507-2.jpeg"
+      ],
+      "weight": 2844,
+      "id": "midnight-reserve",
+      "description": "Midnight Reserve showcases the rich depth and character of solid walnut in a timeless end-grain design. Complete with a functional juice groove and built to withstand years of daily use, this one of one board is handcrafted from premium hardwood and finished with food-safe oil and wax. Designed for serious prep work and elegant presentation alike, it offers exceptional durability, craftsmanship, and natural beauty in every detail.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "10 3/4\" x 8 1/4\" x 1 1/2\"",
+      "price": "$75",
+      "name": "Cherry Ember ",
+      "wood": "Cherry",
+      "featured": false,
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2527-2.jpeg",
+        "/assets/uploads/img_2524-2.jpeg",
+        "/assets/uploads/img_2526-2.jpeg"
+      ],
+      "weight": 1561,
+      "id": "cherry-ember",
+      "description": "Cherry Ember showcases the rich warmth and natural beauty of cherry wood in a striking end-grain pattern. Featuring a distinctive geometric design that highlights the character of the grain, this one of one board is handcrafted from premium hardwood and finished with food-safe oil and wax. Built for everyday use and designed to age beautifully over time, Cherry Ember offers exceptional durability, craftsmanship, and timeless style in a compact size.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "12\" x 7 3/4\" x 1 1/2\"",
+      "price": "$75",
+      "name": "Midnight Cut ",
+      "wood": "Walnut",
+      "featured": false,
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2523-2.jpeg",
+        "/assets/uploads/img_2521-2.jpeg",
+        "/assets/uploads/img_2522-2.jpeg"
+      ],
+      "weight": 1502,
+      "id": "midnight-cut",
+      "description": "Midnight Cut showcases the rich character and natural beauty of walnut in a handcrafted end-grain design. Finished with food-safe oil and wax, this one of one board highlights the depth, contrast, and durability that make walnut a timeless favorite. Compact yet built for everyday use, Midnight Cut delivers exceptional craftsmanship and lasting performance in a versatile size.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "17\" x 12 1/2\" x 1 3/4\"",
+      "price": "$320",
+      "name": "Bob and Weave ",
+      "wood": "Maple and Walnut ",
+      "featured": false,
+      "status": "sold",
+      "finish": "Oil and Wax ",
+      "stock": 0,
+      "images": [
+        "/assets/uploads/img_2285.jpeg",
+        "/assets/uploads/img_2283.jpeg",
+        "/assets/uploads/img_2284.jpeg",
+        "/assets/uploads/img_2286.jpeg"
+      ],
+      "weight": 3694,
+      "id": "bob-and-weave",
+      "description": "Bob and Weave combines bold geometry with classic craftsmanship. The woven end grain pattern gives this cutting board a striking look while providing a durable surface built for everyday use. Complete with a built in juice groove, it’s designed to perform beautifully while standing out on your countertop.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "7 1/2\" x 7 1/2\" x 1 1/2\"",
+      "price": "$200",
+      "name": "Purple Rain ",
+      "wood": "Ash",
+      "featured": false,
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2520-2.jpeg",
+        "/assets/uploads/img_2514-2.jpeg",
+        "/assets/uploads/img_2518-2.jpeg"
+      ],
+      "weight": 747,
+      "id": "purple-rain",
+      "description": "Purple Rain blends natural ash hardwood with vibrant purple resin in a striking live-edge design. Handcrafted as a one of one piece, this tray highlights the contrast between organic wood grain and bold color, creating a functional work of art. Finished with food-safe oil and wax, Purple Rain brings character, craftsmanship, and conversation-starting style to any space.",
+      "category": "cigar-ash-trays"
+    },
+    {
+      "size": "15 3/4\" x 12\" x 1 1/2\"",
+      "price": "$140",
+      "name": "Midnight Timber ",
+      "wood": "Walnut",
+      "featured": false,
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2513-2.jpeg",
+        "/assets/uploads/img_2508-2.jpeg",
+        "/assets/uploads/img_2509-2.jpeg"
+      ],
+      "weight": 3077,
+      "id": "midnight-timber",
+      "description": "Midnight Timber showcases the rich depth and natural character of walnut in a bold end-grain design. Handcrafted from premium hardwood and finished with food-safe oil and wax, this one of one board highlights the beauty of natural wood through subtle contrast and timeless craftsmanship. Built for everyday use and designed to stand the test of time, Midnight Timber offers exceptional durability, performance, and style in every detail.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "21 3/4\" x 12 1/2\" x 1 1/4\"",
+      "price": "$320",
+      "name": "The Mega Shocka ",
+      "wood": "Walnut and Maple Inlay ",
+      "status": "sold",
+      "finish": "Oil and Wax ",
+      "stock": 0,
+      "images": [
+        "/assets/uploads/img_2391.jpeg",
+        "/assets/uploads/img_2387.jpeg",
+        "/assets/uploads/img_2388.jpeg",
+        "/assets/uploads/img_2392.jpeg"
+      ],
+      "weight": 3308,
+      "id": "the-mega-shocka",
+      "description": "The Mega Shocka! This board is all good vibes with a bold maple skeleton shaka inlay set into rich walnut. Clean contrast, smooth lines, and just the right amount of attitude make it a killer centerpiece whether you’re throwing food on it after a long day or just letting it steal the show.",
+      "category": "cutting-boards"
+    },
+    {
+      "size": "20 1/4\" (with handle) x 7\" x 3/4\"",
+      "price": "$95",
+      "name": "Walnut 2 ",
+      "wood": "Walnut",
+      "status": "sold",
+      "finish": "Oil and Wax ",
+      "stock": 0,
+      "images": [
+        "/assets/uploads/img_2410.jpeg",
+        "/assets/uploads/img_2411.jpeg",
+        "/assets/uploads/img_2408.jpeg",
+        "/assets/uploads/img_2409.jpeg"
+      ],
+      "weight": 819,
+      "id": "walnut-2",
+      "description": "This walnut charcuterie board features deep espresso tones and bold grain patterns that give each piece its own character. Designed with a clean tapered profile and smooth finish, it’s a timeless serving board built for both everyday use and special gatherings.",
+      "category": "charcuterie-boards"
+    },
+    {
+      "size": "8\" x 8\" x 1/2\"",
+      "price": "$100",
+      "name": "Zebra's and Cigar's",
+      "wood": "Zebra Wood ",
+      "status": "sold",
+      "finish": "Oil and Wax ",
+      "stock": 0,
+      "images": [
+        "/assets/uploads/img_2310.jpeg",
+        "/assets/uploads/img_2312.jpeg",
+        "/assets/uploads/img_2316.jpeg",
+        "/assets/uploads/img_2314.jpeg"
+      ],
+      "weight": 836,
+      "id": "zebras-and-cigars",
+      "description": "Crafted from bold zebrawood in an end grain pattern, Zebra & Cigars is a handcrafted cigar ashtray designed to stand out. The rich contrast and layered grain create a striking centerpiece, while the deep rests and solid construction make it perfect for slow evenings and good conversation.",
+      "category": "cigar-ash-trays"
+    },
+    {
+      "size": "20 1/4\" (with handle) x 7\" x 3/4\"",
+      "price": "$95",
+      "name": "Cherry Charcuterie ",
+      "wood": "Cherry ",
+      "featured": true,
+      "status": "sold",
+      "finish": "Oil and Wax ",
+      "stock": 0,
+      "images": [
+        "/assets/uploads/img_2402.jpeg",
+        "/assets/uploads/img_2403.jpeg",
+        "/assets/uploads/img_2400.jpeg",
+        "/assets/uploads/img_2401.jpeg"
+      ],
+      "weight": 787,
+      "id": "cherry-charcuterie",
+      "description": "Made from rich cherry wood, this charcuterie board brings a warm tone and timeless simplicity to any gathering. Its clean profile and natural grain make it perfect for serving cheeses, meats, and appetizers with an elegant presentation.",
+      "category": "charcuterie-boards"
     }
   ]
 }
