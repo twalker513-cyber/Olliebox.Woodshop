@@ -10,9 +10,8 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2436.jpeg",
-        "/assets/uploads/img_2437.jpeg",
         "/assets/uploads/img_2438.jpeg",
+        "/assets/uploads/img_2436.jpeg",
         "/assets/uploads/img_2440.jpeg"
       ],
       "weight": 2369,
@@ -29,9 +28,8 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2428.jpeg",
-        "/assets/uploads/img_2429.jpeg",
         "/assets/uploads/img_2430.jpeg",
+        "/assets/uploads/img_2428.jpeg",
         "/assets/uploads/img_2431.jpeg"
       ],
       "weight": 3909,
@@ -48,9 +46,8 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2432.jpeg",
-        "/assets/uploads/img_2433.jpeg",
         "/assets/uploads/img_2434.jpeg",
+        "/assets/uploads/img_2432.jpeg",
         "/assets/uploads/img_2435.jpeg"
       ],
       "weight": 1985,
@@ -67,9 +64,8 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
-        "/assets/uploads/img_2441.jpeg",
-        "/assets/uploads/img_2442.jpeg",
         "/assets/uploads/img_2443.jpeg",
+        "/assets/uploads/img_2441.jpeg",
         "/assets/uploads/img_2444.jpeg"
       ],
       "weight": 2245,
@@ -87,9 +83,9 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
+        "/assets/uploads/img_2297.jpeg",
         "/assets/uploads/img_2295.jpeg",
         "/assets/uploads/img_2296.jpeg",
-        "/assets/uploads/img_2297.jpeg",
         "/assets/uploads/img_2298.jpeg"
       ],
       "weight": 770,
@@ -220,9 +216,9 @@
       "finish": "Oil and Wax ",
       "stock": 1,
       "images": [
+        "/assets/uploads/img_2418.jpeg",
         "/assets/uploads/img_2416.jpeg",
-        "/assets/uploads/img_2417.jpeg",
-        "/assets/uploads/img_2418.jpeg"
+        "/assets/uploads/img_2417.jpeg"
       ],
       "weight": 1097,
       "id": "blue-roller",
