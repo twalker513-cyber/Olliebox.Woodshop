@@ -524,6 +524,28 @@ window.SnipcartSettings = {
   </dialog>
 
   <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.setAttribute(
+          'aria-label',
+          navLinks.classList.contains('active') ? 'Close menu' : 'Open menu'
+        );
+      });
+
+      navLinks.querySelectorAll('a, button').forEach((navItem) => {
+        navItem.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle.setAttribute('aria-label', 'Open menu');
+        });
+      });
+    }
+  </script>
+
+  <script>
     const categoryButtons = document.querySelectorAll('.category-btn');
     const categorySections = document.querySelectorAll('.shop-category-section');
 
