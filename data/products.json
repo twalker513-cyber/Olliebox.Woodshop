@@ -374,6 +374,25 @@
       "category": "cutting-boards"
     },
     {
+      "size": "15 3/4\" x 12\" x 1 1/2\"",
+      "price": "$140",
+      "name": "Midnight Timber ",
+      "wood": "Walnut",
+      "featured": false,
+      "status": "available",
+      "finish": "Oil and Wax ",
+      "stock": 1,
+      "images": [
+        "/assets/uploads/img_2513-2.jpeg",
+        "/assets/uploads/img_2508-2.jpeg",
+        "/assets/uploads/img_2509-2.jpeg"
+      ],
+      "weight": 3077,
+      "id": "midnight-timber",
+      "description": "Midnight Timber showcases the rich depth and natural character of walnut in a bold end-grain design. Handcrafted from premium hardwood and finished with food-safe oil and wax, this one of one board highlights the beauty of natural wood through subtle contrast and timeless craftsmanship. Built for everyday use and designed to stand the test of time, Midnight Timber offers exceptional durability, performance, and style in every detail.",
+      "category": "cutting-boards"
+    },
+    {
       "size": "17\" x 12 1/2\" x 1 3/4\"",
       "price": "$320",
       "name": "Bob and Weave ",
@@ -411,25 +430,6 @@
       "id": "purple-rain",
       "description": "Purple Rain blends natural ash hardwood with vibrant purple resin in a striking live-edge design. Handcrafted as a one of one piece, this tray highlights the contrast between organic wood grain and bold color, creating a functional work of art. Finished with food-safe oil and wax, Purple Rain brings character, craftsmanship, and conversation-starting style to any space.",
       "category": "cigar-ash-trays"
-    },
-    {
-      "size": "15 3/4\" x 12\" x 1 1/2\"",
-      "price": "$140",
-      "name": "Midnight Timber ",
-      "wood": "Walnut",
-      "featured": false,
-      "status": "available",
-      "finish": "Oil and Wax ",
-      "stock": 1,
-      "images": [
-        "/assets/uploads/img_2513-2.jpeg",
-        "/assets/uploads/img_2508-2.jpeg",
-        "/assets/uploads/img_2509-2.jpeg"
-      ],
-      "weight": 3077,
-      "id": "midnight-timber",
-      "description": "Midnight Timber showcases the rich depth and natural character of walnut in a bold end-grain design. Handcrafted from premium hardwood and finished with food-safe oil and wax, this one of one board highlights the beauty of natural wood through subtle contrast and timeless craftsmanship. Built for everyday use and designed to stand the test of time, Midnight Timber offers exceptional durability, performance, and style in every detail.",
-      "category": "cutting-boards"
     },
     {
       "size": "21 3/4\" x 12 1/2\" x 1 1/4\"",
