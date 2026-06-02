@@ -455,9 +455,9 @@
       "price": "$95",
       "name": "Walnut 2 ",
       "wood": "Walnut",
-      "status": "sold",
+      "status": "available",
       "finish": "Oil and Wax ",
-      "stock": 0,
+      "stock": 1,
       "images": [
         "/assets/uploads/img_2410.jpeg",
         "/assets/uploads/img_2411.jpeg",
