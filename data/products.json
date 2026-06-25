@@ -268,9 +268,9 @@
       "price": "$40",
       "name": "Domestic Bottle Opener ",
       "wood": "Walnut, Maple, and Cherry ",
-      "status": "available",
+      "status": "sold",
       "finish": "Oil",
-      "stock": 1,
+      "stock": 0,
       "images": [
         "/assets/uploads/img_2422.jpeg",
         "/assets/uploads/img_2423.jpeg"
